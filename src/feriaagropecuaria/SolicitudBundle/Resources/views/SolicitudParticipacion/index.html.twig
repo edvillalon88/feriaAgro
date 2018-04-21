@@ -1,0 +1,66 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Solicitudes list{% endblock %}
+
+{% block body -%}
+
+
+<div class="table-responsive">
+    <table class="records_list table table-striped">
+        <thead>
+            <tr>
+
+                <th>Nombre</th>
+                <th>Firma</th>
+                <th>Direccion</th>
+                <th>Codigopostal</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>Identificador</th>
+                <th>Fechacreado</th>
+                <th># de Credenciales</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+
+                <td>{{ entity.Nombre }}</td>
+                <td>{{ entity.NombreFirma }}</td>
+                <td>{{ entity.Direccion }}</td>
+                <td>{{ entity.CodigoPostal }}</td>
+                <td>{{ entity.Telefono }}</td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.identificador }}</td>
+                <td>{% if entity.FechaCreado %}{{ entity.FechaCreado|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.credenciales.count }}</td>
+                <td>
+
+
+                        <a href="{{ path('solicitud_participacion_show', { 'identificador': entity.Identificador }) }}"><button type="button" class="btn btn-default">show</button></a>
+
+                        <a href="{{ path('solicitud_participacion_edit', { 'identificador': entity.Identificador }) }}"><button type="button" class="btn btn-default">edit</button></a>
+
+                        {% if entity.aprobada == true %}
+
+                            <span class="label label-info">Aprobada</span>
+
+                        {% elseif entity.rechazo is empty %}
+
+                            <a href="{{ path('solicitud_participacion_aprobar', { 'id': entity.idSolicitudParticipacion }) }}"><button type="button" class="btn btn-default">Aprobar</button></a>
+
+                        {% elseif entity.rechazo == true %}
+                            <span class="label label-danger">Rechazada</span>
+                        {% endif %}
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+    {% endblock %}

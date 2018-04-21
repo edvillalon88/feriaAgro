@@ -1,0 +1,193 @@
+{% extends "::sitiolayaout.html.twig" %}
+
+{% block selector  %}home{% endblock %}
+
+{% block body -%}
+    {#{{ 'inicio.Hola'|trans }} Eduardo!#}
+
+ <div id="main">
+
+    <section id="welcomeScreen" style="min-height: 428px;">
+
+    <div id="sectioIzq">
+
+    <img src="{{ asset('bundles/feriaagropecuariahome/images/home/image01.jpg') }}"  alt="" class="imagenes" id="img01"/><img src="{{ asset('bundles/feriaagropecuariahome/images/home/image02.jpg') }}"  alt="" class="imagenes" id="img02"/><img src="{{ asset('bundles/feriaagropecuariahome/images/home/image03.jpg') }}"  alt="" class="imagenes" id="img03"/>
+    </div>
+    <div id="sectioDer" >
+
+
+        {{ 'Textos.TesxtoInicio' | trans |raw }}
+    <a href="#sectionLastNew" id="scrollto4" class="smootScroll"><img src="{{ asset('bundles/feriaagropecuariahome/images/scrollto.png') }}" alt=""/></a>
+    </div>
+    </section>
+     <div class="pusher" id="sectionLastNew"></div>
+   
+    <section id="lastNew">
+		<div id="sectioIzq">
+			<img src="{{ asset(evento.WebPathFoto) }}"  alt="" />
+		</div>
+        <div id="sectioDer" >
+            <h2>{{ evento.Nombre }}</h2>
+            <div>
+                <p>	{{ evento.Descripcion }}</p>
+            </div>
+
+            <a href="#sectionServices" id="scrollto4" class="smootScroll"><img src="{{ asset('bundles/feriaagropecuariahome/images/scrollto.png') }}" alt=""/></a>
+        </div>
+	</section>
+	<div class="pusher" id="sectionServices"></div>
+	<section id="servicios">
+     <a href="#pusher" class="bt-top smootScroll">></a>
+
+
+    <div class="slider1"  >
+
+           {% for entity in entities %}
+               <div class="slide">
+                   <div class="infoSlide">
+                       <h2>{{  entity.Nombre }}</h2>
+                       <p class="descripServiceHome">{{ entity.descripcion }}</p>
+                       <a href="{{ path('feriaagropecuaria_home_servcios',{ 'pagina' : 'locales' ,'_locale': app.request.locale  }) }}" class="btnVerde"><img src="{{ asset('bundles/feriaagropecuariahome/images/read-more.png') }}" alt=""/>{{ 'Textos.LeerMas' | trans |raw }}</a>
+                       <h4>Eventos Anteriores...</h4>
+                       <ul class="galeriaSmall">
+                           {% for serv in entity.Fotos %}
+                               <li><a href="{{ asset(serv.webPath) }}" data-descrip="{{ serv.descripcion | raw }}" data-big="#Servicio-{{ entity.idServicio  }}" class="imgServicios"><img src="{{ web_image(serv.webPath) }}" width="140" alt=""/></a></li>
+                           {% else %}
+                               No existen fotos para este Servcio
+                           {% endfor %}
+
+
+
+                       </ul>
+                   </div>
+                   <div id="Servicio-{{ entity.idServicio  }}">
+                       <div class="galeriaBig" ><img class="bigImg"  src="{% if entity.Fotos.count > 0 %}{{ asset(entity.Fotos[0].webPath) }} {% endif %}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>
+                       <p class="descripFotoGaleria">{% if entity.Fotos.count > 0 %}{{ entity.Fotos[0].descripcion | raw }} {% endif %}</p>
+                   </div>
+               </div>
+           {% endfor %}
+
+
+          {#<div class="slide">#}
+          {#<img src="{{ asset('bundles/feriaagropecuariahome/images/cinta.png') }}" class="cintaFIAGROP" alt=""/>#}
+            {#<div class="infoSlide">#}
+                {#<h2>{{  entities[1].Nombre }}</span></h2>#}
+                {#<p class="descripServiceHome">{{ entities[1].descripcion | raw }}</p>#}
+                {#<a href="{{ path('feriaagropecuaria_home_servcios',{ 'pagina' : 'fiagrop' ,'_locale': app.request.locale  }) }}" class="btnVerde"><img src="{{ asset('bundles/feriaagropecuariahome/images/read-more.png') }}" alt=""/>{{ 'Textos.LeerMas' | trans |raw }}</a>#}
+                {#<h4>Eventos Anteriores...</h4>#}
+
+
+                {#<ul class="galeriaSmall">#}
+                    {#{% for serv in entities[1].Fotos %}#}
+                        {#<li><a href="{{ asset(serv.webPath) }}" data-descrip="{{ serv.descripcion | raw }}" data-big="#feriasExpo" class="imgServicios"><img src="{{ web_image(serv.webPath) }}" width="140" alt=""/></a></li>#}
+                    {#{% else %}#}
+                        {#No existen fotos para este Servcio#}
+                    {#{% endfor %}#}
+
+                {#</ul>#}
+
+            {#</div>#}
+            {#<div id="feriaExpo">#}
+                {#<div class="galeriaBig"><img class="bigImg"   src="{% if entities[1].Fotos.count > 0 %}{{ asset(entities[1].Fotos[0].webPath) }} {% endif %}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>#}
+                {#<p class="descripFotoGaleria">{% if entities[1].Fotos.count > 0 %}{{ entities[1].Fotos[0].descripcion | raw }} {% endif %}</p>#}
+            {#</div>#}
+           {#</div>#}
+
+
+            {#<div class="slide">#}
+            {#<img src="{{ asset('bundles/feriaagropecuariahome/images/cinta.png') }}" class="cintaFIAGROP" alt=""/>#}
+            {#<div class="infoSlide">#}
+                {#<h2>{{  entities[2].Nombre }}</h2>#}
+                {#<p class="descripServiceHome">{{ entities[2].descripcion | raw }}</p>#}
+                {#<a href="{{ path('feriaagropecuaria_home_servcios',{ 'pagina' : 'fiagrop' ,'_locale': app.request.locale  }) }}" class="btnVerde"><img src="{{ asset('bundles/feriaagropecuariahome/images/read-more.png') }}" alt=""/>{{ 'Textos.LeerMas' | trans |raw }}</a>#}
+                {#<h4>Trabajos Anteriores...</h4>#}
+
+
+                {#<ul class="galeriaSmall">#}
+                    {#{% for serv in entities[2].Fotos %}#}
+                        {#<li><a href="{{ asset(serv.webPath) }}" data-descrip="{{ serv.descripcion | raw }}" data-big="#promoPubli" class="imgServicios"><img src="{{ web_image(serv.webPath) }}" width="140" alt=""/></a></li>#}
+                    {#{% else %}#}
+                        {#No existen fotos para este Servcio#}
+                    {#{% endfor %}#}
+                {#</ul>#}
+
+            {#</div>#}
+            {#<div id="promoPubli">#}
+                {#<div class="galeriaBig"><img class="bigImg"   src="{% if entities[2].Fotos.count > 0 %}{{ asset(entities[2].Fotos[0].webPath) }} {% endif %}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>#}
+                {#<p class="descripFotoGaleria">{% if entities[2].Fotos.count > 0 %}{{ entities[2].Fotos[0].descripcion | raw }} {% endif %}</p>#}
+            {#</div>#}
+           {#</div>#}
+
+           {#<div class="slide">#}
+           {#<img src="{{ asset('bundles/feriaagropecuariahome/images/cinta.png') }}" class="cintaFIAGROP" alt=""/>#}
+            {#<div class="infoSlide">#}
+                {#<h2>{{  entities[3].Nombre }}</h2>#}
+                {#<p class="descripServiceHome">{{ entities[3].descripcion | raw }}</p>#}
+                {#<a href="{{ path('feriaagropecuaria_home_servcios',{ 'pagina' : 'fiagrop' ,'_locale': app.request.locale  }) }}" class="btnVerde"><img src="{{ asset('bundles/feriaagropecuariahome/images/read-more.png') }}" alt=""/>{{ 'Textos.LeerMas' | trans |raw }}</a>#}
+                {#<h4>Eventos Anteriores...</h4>#}
+
+
+                {#<ul class="galeriaSmall">#}
+                    {#{% for serv in entities[3].Fotos %}#}
+                        {#<li><a href="{{ asset(serv.webPath) }}" data-descrip="{{ serv.descripcion | raw }}" data-big="#mobiliaria" class="imgServicios"><img src="{{ web_image(serv.webPath) }}" width="140" alt=""/></a></li>#}
+                    {#{% else %}#}
+                        {#No existen fotos para este Servcio#}
+                    {#{% endfor %}#}
+                {#</ul>#}
+
+            {#</div>#}
+            {#<div id="mobiliaria">#}
+                {#<div class="galeriaBig"><img class="bigImg"   src="{% if entities[3].Fotos.count > 0 %}{{ asset(entities[3].Fotos[0].webPath) }} {% endif %}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>#}
+                {#<p class="descripFotoGaleria">{% if entities[3].Fotos.count > 0 %}{{ entities[3].Fotos[0].descripcion | raw }} {% endif %}</p>#}
+            {#</div>#}
+           {#</div>#}
+
+           {#<div class="slide">#}
+
+           {#<img src="{{ asset('bundles/feriaagropecuariahome/images/cinta.png') }}" class="cintaFIAGROP" alt=""/>#}
+        {#<div class="infoSlide">#}
+                {#<h2>{{  entities[4].Nombre }}</span></h2>#}
+                {#<p class="descripServiceHome">{{ entities[4].descripcion | raw }}</p>#}
+                {#<a href="{{ path('feriaagropecuaria_home_servcios',{ 'pagina' : 'fiagrop' ,'_locale': app.request.locale  }) }}" class="btnVerde"><img src="{{ asset('bundles/feriaagropecuariahome/images/read-more.png') }}" alt=""/>{{ 'Textos.LeerMas' | trans |raw }}</a>#}
+                {#<h4>Eventos Anteriores...</h4>#}
+                    {#<ul class="galeriaSmall">#}
+
+                        {#{% for serv in entities[4].Fotos %}#}
+                            {#<li><a href="{{ asset(serv.webPath) }}" data-descrip="{{ serv.descripcion | raw }}" data-big="#alimentacion" class="imgServicios"><img src="{{ web_image(serv.webPath) }}" width="140" alt=""/></a></li>#}
+                        {#{% else %}#}
+                            {#No existen fotos para este Servcio#}
+                        {#{% endfor %}#}
+
+                    {#</ul>#}
+
+            {#</div>#}
+            {#<div id="alimentacion">#}
+                {#<div class="galeriaBig"><img class="bigImg"   src="{% if entities[4].Fotos.count > 0 %}{{ asset(entities[4].Fotos[0].webPath) }} {% endif %}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>#}
+                {#<p class="descripFotoGaleria">{% if entities[4].Fotos.count > 0 %}{{ entities[4].Fotos[0].descripcion | raw }} {% endif %}</p>#}
+            {#</div>#}
+           {#</div>#}
+
+      </div>
+
+</div>
+
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        $(document).ready(function(){
+
+            $(".imgServicios").click(function(e){
+                e.preventDefault();
+
+                $($(this).attr('data-big')).find("img.bigImg").attr('src',$(this).attr('href'));
+                $($(this).attr('data-big')).find("p.descripFotoGaleria").html($(this).attr('data-descrip'));
+            })
+        })
+    </script>
+{% endblock %}

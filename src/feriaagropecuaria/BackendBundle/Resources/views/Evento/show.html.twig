@@ -1,0 +1,41 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Evento{% endblock %}
+{% block body -%}
+    <table class="record_properties">
+        <tbody>
+        <tr>
+            <th>Idalbum</th>
+            <td>{{ entity.idEvento }}</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>{{ entity.Nombre }}</td>
+        </tr>
+        <tr>
+            <th>Descripcion</th>
+            <td>{{ entity.Descripcion }}</td>
+        </tr>
+        <tr>
+            <th>Foto</th>
+            <td><img src="{{ asset(entity.webPathFoto) }}" width="100" /></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('evento') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('evento_edit', { 'id': entity.idEvento }) }}">
+                Edit
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+
+
+{% endblock %}

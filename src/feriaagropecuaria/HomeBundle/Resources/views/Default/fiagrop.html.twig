@@ -1,0 +1,55 @@
+{% extends "::sitiolayaout.html.twig" %}
+
+{% block selector  %}service{% endblock %}
+
+{% block body -%}
+
+    <div id="main">
+        <section id="servicesFiagrop">
+            <div class="slider1" id="sliderFIAGROP" >
+
+
+                {% for entity in entities %}
+
+
+                    <div class="slide">
+                        <h3>{{ entity.Nombre }}</h3>
+                        <div class="infoSlide">
+                            <img src="{{ asset(entity.webPathFoto) }}" alt=""/>
+
+                        </div>
+                        <div>
+                            <p>{{ entity.descripcion }}</p>
+                            <!--                        <h4>Precio:  <span>{{ entity.Precio }} cup</span> </h4>-->
+
+
+                        </div>
+                    </div>
+
+
+                {% endfor %}
+
+
+
+
+                {#<div class="slide">#}
+                    {#<h3><span>Alojamiento</span> con <span>alimentación</span> asociada</h3>#}
+                    {#<div class="infoSlide">#}
+                        {#<img src="{{ asset('bundles/feriaagropecuariahome/images/servicio-hospedaje.png') }}" alt=""/>#}
+
+                    {#</div>#}
+                    {#<div>#}
+                        {#<p>{{ entities[4].descripcion }}</p>#}
+                        {#<a href="{{ path("feriaagropecuaria_home_tour", { '_locale': app.request.locale, 'lugar' : 0 }) }}" class="btnVerde">Motel</a> <a href="{{ path("feriaagropecuaria_home_tour", { '_locale': 'es', 'lugar' : 4 }) }}" class="btnVerde">Alimentaci&oacute;n</a>#}
+
+
+                    {#</div>#}
+                {#</div>#}
+
+
+            </div>
+
+
+        </section>
+    </div>
+{% endblock %}

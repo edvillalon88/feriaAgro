@@ -1,0 +1,30 @@
+evento:
+    path:     /
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Evento:index" }
+
+evento_show:
+    path:     /{id}/show
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Evento:show" }
+
+evento_new:
+    path:     /new
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Evento:new" }
+
+evento_create:
+    path:     /create
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Evento:create" }
+    methods:  POST
+
+evento_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Evento:edit" }
+
+evento_update:
+    path:     /{id}/update
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Evento:update" }
+    methods:  [POST, PUT]
+
+evento_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Evento:delete" }
+    methods:  [POST, DELETE]

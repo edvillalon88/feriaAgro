@@ -1,0 +1,287 @@
+{% extends '::sitiolayaout.html.twig' %}
+{% block selector  %}service{% endblock %}
+{% block body -%}
+<style type="text/css">
+    ul
+    {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    li.pro  div
+    {
+        display: inline;
+        margin-right: 10px;
+    }
+
+
+
+    .header input { margin: 0px !important; }
+
+    h4{display: inline;}
+
+    label  { display: inline !important; margin-right: 5px;}
+
+</style>
+<section id="galeria">
+    <h2>Crear <span>Solicitud</span></h2>
+    <br/>
+    {{ form_start(form) }}
+    <div>
+        <div id="sectioIzq" style="margin-top: 0px; text-align: right" >
+
+
+            <div class="areaForm">
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Nombre</label>
+                    <div class="controls">
+                        {{ form_widget(form.Nombre) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Tipo de Visitante</label>
+                    <div class="controls">
+                        {{ form_widget(form.TipoVisitante) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Nombre de Firma</label>
+                    <div class="controls">
+                        {{ form_widget(form.NombreFirma) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Direccion</label>
+                    <div class="controls">
+                        {{ form_widget(form.Direccion) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Pais</label>
+                    <div class="controls">
+                        {{ form_widget(form.Pais) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div id="org">
+                        <label class="control-label" for="inputNombre">Organismo</label>
+                        <div class="controls">
+
+                            {{ form_widget(form.Organismo) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Codigo Postal </label>
+                    <div class="controls">
+
+                        {{ form_widget(form.CodigoPostal) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Telefono</label>
+                    <div class="controls">
+                        {{ form_widget(form.Telefono) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Fax</label>
+                    <div class="controls">
+                        {{ form_widget(form.Fax) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">email</label>
+                    <div class="controls">
+                        {{ form_widget(form.email) }}
+                    </div>
+                </div>
+            </div>
+            <div class="areaForm">
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Area</label>
+                    <div class="controls">
+                        {{ form_widget(form.Area) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Metros Cuadrados</label>
+                    <div class="controls">
+                        {{ form_widget(form.Metros) }}
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Codigo de Contrato</label>
+                    <div class="controls">
+                        {{ form_widget(form.CodigoContrato) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Sala</label>
+                    <div class="controls">
+                        {{ form_widget(form.Sala) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Stan</label>
+                    <div class="controls">
+                        {{ form_widget(form.Stan) }}
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Rotulo</label>
+                    <div class="controls">
+
+                        {{ form_widget(form.Rotulo) }}
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        <div id="sectioDer" >
+            <div class="areaForm">
+                <div class="control-group">
+
+                    <div class="controls">
+                        <p>Presentamos los siguientes productos:</p>
+                        {{ form_widget(form.Productos) }}
+                    </div>
+                </div>
+                <div class="control-group">
+
+                    <div class="controls">
+                        <p>Representamos a  las  siguientes Firmas:</p>
+                        {{ form_widget(form.Firmas) }}
+                    </div>
+                </div>
+                <div class="control-group">
+
+                    <div class="controls">
+                        <p>Especificar  aquí  requerimientos de servicios eléctricos, salas de conferencias, interpretes etc.</p>
+                        {{ form_widget(form.Observaciones) }}
+                    </div>
+                </div>
+                <br/>
+                <div class="control-group">
+                    <div class="controls">
+                        <ul class="tags" data-prototype="{{ form_widget(form.solicitudproductos.vars.prototype)|e }}">
+                            <div class="header btnAgregarInsumo" > <label><h4>Agregar Servcios o Insumos</h4></label></div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="submit" value="Enviar Solicitud" style="float:right">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{ form_widget(form._token) }}
+
+    </form>
+</section>
+<br/>
+<br/>
+<br/>
+<br/>
+
+{% endblock %}
+ {% block javascripts -%}
+ <script type="text/javascript">
+     var $collectionHolder;
+
+     // setup an "add a tag" link
+     var $addSolicitudLink = $('<button class="add_solicitud_link glyphicon glyphicon-plus btn btn-default"><strong>+</strong></button>');
+     var $newLinkLi = $('<span></span>').append($addSolicitudLink);
+
+     function addTagForm($collectionHolder, $newLinkLi) {
+         // Get the data-prototype explained earlier
+         var prototype = $collectionHolder.data('prototype');
+
+         // get the new index
+         var index = $collectionHolder.data('index');
+
+         // Replace '__name__' in the prototype's HTML to
+         // instead be a number based on how many items we have
+         var newForm = prototype.replace(/__name__/g, index);
+
+
+         // increase the index with one for the next item
+         $collectionHolder.data('index', index + 1);
+
+         // Display the form in the page in an li, before the "Add a tag" link li
+         var $newFormLi = $('<li class="pro input-group"></li>').append(newForm);
+         $newLinkLi.after($newFormLi);
+         addTagFormDeleteLink($newFormLi);
+     }
+
+
+
+     function addTagFormDeleteLink($tagFormLi) {
+         var $removeFormA = $('<button class="glyphicon glyphicon-remove btn btn-danger"><strong>X</strong></button>');
+         $tagFormLi.append($removeFormA);
+
+         $removeFormA.on('click', function(e) {
+             // prevent the link from creating a "#" on the URL
+             e.preventDefault();
+
+             // remove the li for the tag form
+             $tagFormLi.remove();
+         });
+     }
+
+     function ToggleOrganismo(){
+         if($("select[data-attr='org'] option:selected").text().toLocaleUpperCase() != "CUBA")
+         {
+             $("#org").hide();
+             $("#org  select").attr('disabled', 'disabled');
+         }else
+         {
+             $("#org").show();
+             $("#org  select").removeAttr('disabled');
+         }
+     }
+
+     $(document).ready(function() {
+         // Get the ul that holds the collection of tags
+         $collectionHolder = $('ul.tags');
+
+         // add the "add a tag" anchor and li to the tags ul
+        // $collectionHolder.append($newLinkLi);
+         $(".header").append($newLinkLi);
+         // count the current form inputs we have (e.g. 2), use that as the new
+         // index when inserting a new item (e.g. 2)
+         $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+         $addSolicitudLink.on('click', function(e) {
+             // prevent the link from creating a "#" on the URL
+             e.preventDefault();
+
+             // add a new tag form (see next code block)
+             addTagForm($collectionHolder, $newLinkLi);
+         });
+
+
+
+         // add a delete link to all of the existing tag form li elements
+         $collectionHolder.find('.pro').each(function() {
+             addTagFormDeleteLink($(this));
+         });
+
+         ToggleOrganismo();
+         $("select[data-attr='org']").change(function(){
+             ToggleOrganismo();
+         });
+     });
+ </script>
+{% endblock %}

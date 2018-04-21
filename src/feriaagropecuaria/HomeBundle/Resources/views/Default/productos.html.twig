@@ -1,0 +1,194 @@
+{% extends "::sitiolayaout.html.twig" %}
+{% block selector  %}cerko{% endblock %}
+{% block body %}
+<style type="text/css">
+    .imaProducto
+    {
+        min-width: 760px !important;
+    }
+    .imaProducto > img
+    {
+        max-width: 700px !important;
+        height: auto !important;
+    }
+</style>
+<section id="productos">
+
+    <div id="contenido">
+        <div id="sectioIzq" >
+
+            <div id="fotosProducto">
+
+                <div id="imaProductos">
+                    <div class="imaProducto"><img src="{{ asset(entities.producto.webPathFoto1) }}" alt="side" /></div>
+                    <div class="imaProducto"><img src="{{ asset(entities.producto.webPathFoto2) }}" alt="side" /></div>
+                    <div class="imaProducto"><img src="{{ asset(entities.producto.webPathFoto2) }}" alt="side" /></div>
+
+                </div>
+
+                <div id="miniaturas">
+                    <ul>
+                        <li class="menuItem"><a href="#" data-img="{{ asset(entities.producto.webPathFoto1) }}" ><img src="{{ web_image(entities.producto.webPathFoto1).resize(100,100) }}" alt="side" /></a></li>
+                        <li class="menuItem"><a href="#" data-img="{{ asset(entities.producto.webPathFoto2) }}" ><img src="{{ web_image(entities.producto.webPathFoto2).resize(100,100) }}" alt="side" /></a></li>
+                        <li class="menuItem"><a href="#" data-img="{{ asset(entities.producto.webPathFoto3) }}" ><img src="{{ web_image(entities.producto.webPathFoto3).resize(100,100) }}" alt="side" /></a></li>
+
+                    </ul>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <div id="sectioDer" >
+            <div id="infoProducto">
+                <h3>{{ entities.producto.Nombre }}</h3>
+                <p>{{ entities.producto.Descripcion | raw }}</p>
+
+            </div>
+        </div>
+    </div>
+
+    <a class="bx-prev" href=""><</a>
+    <a class="bx-next" href="">></a>
+    <section id="preload" style="text-align:center; display: none"><img src="{{ asset('bundles/feriaagropecuariahome/images/loader2.gif') }}"  alt="" style="margin-top:20%;"/></section>
+    <ul id="pagination">
+            {% set cantidad = entities.cantidad %}
+            {% for i in 1..cantidad %}
+                <li><a href="#" data-pagina ="{{ i }}">&nbsp;</a></li>
+            {% endfor %}
+
+        </ul>
+
+
+</section>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        var cantidad = {{ entities.cantidad }};
+        var pagina = 0;
+        var lang = "{{ app.request.locale  }}";
+        var totWidth=0;
+        var positions = new Array();
+        function AcomdarIMG()
+        {
+            totWidth = 0;
+            positions = new Array();
+            $("#imaProductos > .imaProducto").each(function(i){
+
+                // Traverse through all the slides and store their accumulative widths in totWidth
+
+                positions[i]= totWidth;
+                totWidth += $(this).width();
+                //console.log( i);
+                // The positions array contains each slide's commulutative offset from the left part of the container
+
+                if(!$(this).width())
+                {
+                    alert("Please, fill in width & height for all your images!");
+                    return false;
+                }
+
+            });
+
+            $('#imaProductos').width(totWidth);
+        }
+        $(document).ready(function(){
+
+
+
+            AcomdarIMG();
+
+
+
+
+            /* Change the cotnainer div's width to the exact width of all the slides combined */
+
+            $("#productos").on("click",'#miniaturas ul li a',function(e,keepScroll){
+
+                /* On a thumbnail click */
+
+                $('li.menuItem').removeClass('act').addClass('inact');
+                $(this).parent().addClass('act');
+
+                var pos = $(this).parent().prevAll('.menuItem').length;
+
+                var valor = -positions[pos]+'px';
+                $('#imaProductos').stop().animate({marginLeft:valor},450);
+                /* Start the sliding animation */
+                console.log(positions[pos]);
+                e.preventDefault();
+                /* Prevent the default action of the link */
+
+
+                // Stopping the auto-advance if an icon has been clicked:
+
+            });
+
+            $('#miniaturas ul li.menuItem:first').addClass('act').siblings().addClass('inact');
+            /* On page load, mark the first thumbnail as active */
+
+          /*  $(".menuItem > a").click(function(e){
+
+                e.preventDefault();
+                $(".imaProducto > img").attr("src",$(this).attr("data-img"));
+            });*/
+
+            /*****
+             *
+             *	Enabling auto-advance.
+             *
+             ****/
+
+            var current=1;
+
+            var prodAct = 1;
+            var totalProds = cantidad ;
+
+            $(".bx-next").click(function(e){
+                e.preventDefault();
+                if(prodAct < totalProds) {
+                    prodAct++;
+                    pasarProd(prodAct);
+                }
+
+            });
+
+            $(".bx-prev").click(function(e){
+                e.preventDefault();
+                if(prodAct > 1)
+                {
+                    prodAct--;
+                    pasarProd(prodAct);
+                }
+            });
+
+            $("#pagination a").click(function(){
+                var pag = $(this).attr('data-pagina');
+                prodAct = pag;
+                pasarProd(prodAct);
+            })
+        });
+
+
+
+
+
+        function pasarProd(num){
+
+            $("#contenido").fadeOut(100, function(){
+                $("#preload").show();
+                $("#contenido").load("{{ path("feriaagropecuaria_home_prodcuto",{'_locale': app.request.locale}) }}/"+(num-1), function(){
+                    $("#preload").hide();
+                    $("#contenido").fadeIn();
+                    $('#miniaturas ul li.menuItem:first').addClass('act').siblings().addClass('inact');
+
+                    AcomdarIMG();
+                });
+            });
+        }
+    </script>
+
+{% endblock %}

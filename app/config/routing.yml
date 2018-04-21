@@ -1,0 +1,19 @@
+feriaagropecuaria_home:
+    resource: "@feriaagropecuariaHomeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+feriaagropecuaria_solicitud:
+    resource: "@feriaagropecuariaSolicitudBundle/Resources/config/routing.yml"
+    prefix:   /
+
+feriaagropecuaria_usuario:
+    resource: "@feriaagropecuariaUsuarioBundle/Resources/config/routing.yml"
+    prefix:   /
+
+feriaagropecuaria_backend:
+    resource: "@feriaagropecuariaBackendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

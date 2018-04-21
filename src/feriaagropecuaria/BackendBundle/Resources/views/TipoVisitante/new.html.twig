@@ -1,0 +1,31 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Nuevo Tipo Visitante {% endblock %}
+{% block body -%}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Nueva Album</h3>
+        </div>
+        <div class="panel-body">
+            {{ form_start(form) }}
+
+            {{ form_row(form.Nombre) }}
+            <br/>
+            <input type="text" class="form-control" required="required" name="NombreENG"/>
+            <br/>
+            {{ form_row(form.submit) }}
+
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+
+
+
+
+        <a href="{{ path('tipovisitante') }}">
+          <button class="btn btn-default">Back to the list</button>
+        </a>
+
+{% endblock %}

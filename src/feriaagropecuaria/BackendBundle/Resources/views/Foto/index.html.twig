@@ -1,0 +1,55 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}fichero {% endblock %}
+{% block body -%}
+
+<div class="table-responsive">
+    <table class="records_list table table-striped">
+        <thead>
+            <tr>
+                <th>Idfichero</th>
+                <th>Fichero</th>
+                <th>Descripcion</th>
+                <th>Album</th>
+                <th>Fecha</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('foto_show', { 'id': entity.idFichero }) }}">{{ entity.idFichero }}</a></td>
+                <td>
+                    {% if entity.tipo == 1 %}
+                    <img src="{{ web_image(entity.webPath).resize(100,100)}}" width="100" />
+                    {% else %}
+
+                        <video  controls width="200" height="200">
+                            <source src="{{ asset(entity.webPath) }}" type="video/mp4">
+
+                            Your browser does not support the video tag.
+                        </video>
+
+                    {% endif %}
+                </td>
+                <td>{{ entity.Descripcion }}</td>
+                <td>{{ entity.Album.Nombre }}</td>
+                <td>{% if entity.Fecha %}{{ entity.Fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+
+                        <a href="{{ path('foto_show', { 'id': entity.idFichero }) }}"><button type="button" class="btn btn-default">show</button></a>
+
+                        <a href="{{ path('foto_edit', { 'id': entity.idFichero }) }}"><button type="button" class="btn btn-default">edit</button></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+            <a href="{{ path('foto_new') }}">
+                <button type="button" class="btn btn-primary">Create a new entry</button>
+            </a>
+
+    {% endblock %}

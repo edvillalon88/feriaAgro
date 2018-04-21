@@ -1,0 +1,32 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Nuevo Evento{% endblock %}
+{% block body -%}
+    <div class="panel panel-default" xmlns="http://www.w3.org/1999/html">
+
+        <div class="panel-body">
+            {{ form_start(form) }}
+
+            {{ form_row(form.Nombre) }}
+            <br/>
+            <label>Nombre ENG</label>
+            <input type="text" class="form-control" required="required" name="NombreENG"></textarea>
+            <br/>
+            {{ form_row(form.Descripcion) }}
+            <br/>
+            <label>Descripcion ENG</label>
+            <textarea type="" class="form-control" required="required" name="DescripcionENG"></textarea>
+            <br/>
+            {{ form_row(form.Fichero) }}
+            <br/>
+            {{ form_row(form.submit) }}
+
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

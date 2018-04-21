@@ -1,0 +1,215 @@
+@media only screen and (min-width: 661px) and (max-width: 1540px)
+{
+	#pusher{
+	height:130px;
+	}
+	#lastNew > #sectioIzq > img{
+	float:none;	
+	}
+	
+		.wrapper{
+		width:95%;
+		}
+		header{
+		height:auto;
+		min-height:80px;
+		float:left;
+		z-index:5;
+
+		}
+		header > div > a{
+	display:block;
+	margin-top: 30px;
+		}
+
+		nav{
+		display:none;
+
+		}
+		nav ul {
+		width: 100%;
+		margin-top:10px;
+		background-color:#000;
+		padding-bottom: 10px;
+		height: 100%;
+	}
+	nav ul li{
+	float:inherit;
+	width:100%;
+	height:auto;
+	}
+	nav ul li a{
+	font-size:14pt;
+	padding:10px;
+	text-align:left;
+	}
+	nav ul li ul {
+	display:block;
+	position:static;
+	width:90%;
+	}
+	nav ul li ul li{
+	text-align:left;
+	font-size:15pt;
+	}
+	nav ul li ul li a:hover{
+	background-color:#3D3D3D;
+	}
+	nav > img {
+		float:inherit;
+		padding:15px;
+		}
+	.redes li {
+		 padding: 45px 5px;
+	}
+
+	.slide > div, .slide > div:first-child, .slide > div:last-child {
+		padding-left: 0%;
+		width:100%;
+
+	}
+	.slide > div:last-child {
+		display:none;
+	}
+	#cerko .slide > div:last-child {
+		display:block;
+	}
+	.slide h2{
+		margin-left:5%;
+		}
+
+	.descripServiceHome{
+	width:85%;
+	margin:0px auto;
+	}
+	.btnVerde{
+	margin-right:5%;
+	margin-top:3%;
+	}
+
+	h4{
+	margin-left:5%;
+	width:95%;
+	}
+
+	.slide h4 {
+		margin-top: 0;
+	}
+	.galeriaSmall{
+	float:inherit;
+	margin:0px 0%;
+	width: 99%;
+	box-sizing:border-box;
+	text-align:center;
+	}
+	.galeriaSmall li{
+	float:left;
+	display:inline;
+	}
+	.galeriaBig{
+	margin: 15px auto;
+	}
+	.shadowGalery{
+	display:none;
+	}
+
+	.descripFotoGaleria {
+		margin: 0 auto 30px auto;
+
+	}
+	#sectioIzq {
+		  width: 100%;
+		  padding-left:inherit;
+		   padding: 1% 3%;
+		  box-sizing:border-box;
+
+	}
+	#historia > #sectioIzq {
+		height: 735px;
+
+	}
+	#historia > #sectioIzq img {
+		width:100%;
+	box-sizing:border-box;
+
+	}
+
+	#sectioDer {
+		  padding: 0px 3%;
+		width: 100%;
+		box-sizing:border-box;
+		margin-top:15%;
+	}
+	#sectioDer h2{
+	margin-top:0px;
+	}
+	#sectioIzq h2{
+	margin-top:0px;
+	}
+	#mapaFeria{
+	width:100%;
+	}
+	#sectioDer p {
+		display: block;
+		float: left;
+		margin-top: 10px;
+		padding: 10px 0;
+		text-align: justify;
+		width: 100%;
+	}
+	#sliderLocales .slide > div:last-child {
+		display: block;
+	}
+	#sliderLocales .slide > div{
+	padding:0 3%;
+	}
+	.alone{
+	float:left;
+	margin:20px 0px;
+	width:95%;
+	text-align:center;
+	}
+
+	#services h4{
+		width:auto;
+	}
+	#services .btnVerde {
+		margin-right: 9%;
+		margin-top: 0%;
+	}
+
+	#servicesFiagrop .slide > div {
+		width: 100%;
+		padding-left:0px;
+	}
+	#servicesFiagrop .slide > div:last-child {
+		display: block;
+		padding:0px 2%;
+		box-sizing:border-box;
+	}
+	#servicesFiagrop h3 {
+		margin-left: 0%;
+
+	}
+	#fotosProducto {
+		width: 640px;
+
+	}
+	.imaProducto img{
+	width:580px;
+	height:auto;
+	}
+	#infoProducto{
+	padding-bottom:30px;
+	}
+
+	#tools li
+	{
+		display: inline;
+		float: left;
+		margin-right: 15px;
+	}
+
+
+
+}

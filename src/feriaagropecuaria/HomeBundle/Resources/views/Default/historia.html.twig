@@ -1,0 +1,59 @@
+{% extends "::sitiolayaout.html.twig" %}
+
+{% block selector  %}history{% endblock %}
+
+{% block body -%}
+    <section id="historia">
+        <div id="sectioIzq">
+
+            <div class="slider2" >
+                <div class="slide"><img src="{{ asset('bundles/feriaagropecuariahome/images/history/01.jpg') }}" alt=""/><p>Entrada a la finca Doña Juana donde posteriormente se emplazó el reparto Lutgardita</p></div>
+                <div class="slide"><img src="{{ asset('bundles/feriaagropecuariahome/images/history/02.jpg') }}" alt=""/><p>Vista de la Feria en 1956 </p></div>
+                <!--<div class="slide"><img src="{{ asset('bundles/feriaagropecuariahome/images/history/03.jpg') }}" alt=""/><p>Sr. Fidel Barreto Martínez, pronunciando el discurso inaugural, ante la presencia del presidente, la primera dama, señores del jurado y público en general </p></div>-->
+                <div class="slide"><img src="{{ asset('bundles/feriaagropecuariahome/images/history/05.jpg') }}" alt=""/><p>Entre las actividades de esta inauguración se contó con el desfile de los principales ejemplares de la ganadería y ejercicios de gran belleza y maestría</p></div>
+
+            </div>
+            <a href="#" id="verFotosHistoria" >Mostrar Fotos</a>
+        </div>
+        <div id="sectioDer" >
+            {{ 'Textos.NuestraHistoria' | trans |raw }}
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+
+    <script>
+        $(document).ready(function(){
+
+            if(detectPantalla() != "movil"){
+
+                $('.slider2').bxSlider({
+                    minSlides: 1,
+                    maxSlides: 1,
+                    pager: false,
+                    nextText: '>',
+                    prevText: '<',
+                    slideMargin: 10
+                });
+
+            } else {
+                $("#verFotosHistoria").click(function(e){
+                    e.preventDefault();
+                    if($(".slider2 .slide").eq(2).css("display") == "none")	{
+                        $(".slider2 .slide").show();
+                        $(this).html("Ocultar Fotos");
+                    } else {
+                        $(".slider2 .slide").hide();
+                        $(".slider2 .slide").eq(0).show();
+                        $(this).html("Mostrar Fotos");
+                    }
+                });
+            }
+
+            //document ready
+        });//------------
+        //document ready
+
+</script>
+
+{% endblock %}

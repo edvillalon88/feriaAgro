@@ -1,0 +1,3 @@
+tarifas -- servcicios o equipamiento -- no es estatico
+introducir no de stand -- planilla
+intoducir pabellon -- planiilla

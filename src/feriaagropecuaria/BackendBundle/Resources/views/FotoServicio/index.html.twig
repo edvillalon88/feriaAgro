@@ -1,0 +1,40 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Fotos de Servicio list{% endblock %}
+{% block body -%}
+
+<div class="table-responsive">
+
+    <table class="records_list table table-striped">
+        <thead>
+            <tr>
+                <th>Idfotoservicio</th>
+                <th>Foto</th>
+                <th>Servicio</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('fotoservicio_show', { 'id': entity.idFotoServicio }) }}">{{ entity.idFotoServicio }}</a></td>
+                <td><img src="{{ web_image(entity.webPath).resize(100,100) }}" width="100" /></td>
+                <td>{{ entity.Servicio.Nombre }}</td>
+                <td>
+
+                        <a href="{{ path('fotoservicio_show', { 'id': entity.idFotoServicio }) }}"><button type="button" class="btn btn-default">show</button></a>
+
+                        <a href="{{ path('fotoservicio_edit', { 'id': entity.idFotoServicio }) }}"><button type="button" class="btn btn-default">edit</button></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+            <a href="{{ path('fotoservicio_new') }}">
+                <button type="button" class="btn btn-primary">Create a new entry</button>
+            </a>
+
+    {% endblock %}

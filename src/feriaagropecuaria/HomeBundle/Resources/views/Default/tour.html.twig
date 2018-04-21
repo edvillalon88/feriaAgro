@@ -1,0 +1,71 @@
+{% extends "::sitiolayaout.html.twig" %}
+{% block selector  %}tour{% endblock %}
+
+
+{% block body -%}
+<section>
+    <h2>conozca nuestro <span>centro</span></h2>
+    <div id="sectioIzq">
+        <div id="mapaFeria">
+						<a href="/feriaagropecuaria/web/info/motel" style="top: 44%; left: 38.5%;" class="">10</a>
+						<a href="/feriaagropecuaria/web/info/rodeo" style="top: 73%; left: 53%;">El Rodeo</a>
+						<a href="/feriaagropecuaria/web/info/bar-azul" style="left: 13%; top: 48%;" class="">7</a>
+						<a class="" href="/feriaagropecuaria/web/info/salon-ferial" style="left: 81%; top: 67%;"> 3</a>
+						<a href="/feriaagropecuaria/web/info/bar-rojo" style="left: 51%; top: 61%;">8</a>
+						<a href="/feriaagropecuaria/web/info/salon-reuniones" style="top: 58%; left: 56%;" class="">12</a>
+						<a href="/feriaagropecuaria/web/info/cremeria" style="left: 58%; top: 63%;" class="">6</a>
+						<a href="/feriaagropecuaria/web/info/salon-conferencias" style="top: 78.5%; left: 70%;" class="">11</a>
+						<a href="/feriaagropecuaria/web/info/pabellon01" style="left: 81%; top: 78%;" class="">2</a>
+						<a href="/feriaagropecuaria/web/info/pabellon02" style="left: 71%; top: 86%;" class=""> 1</a>
+						<a href="/feriaagropecuaria/web/info/pabellon03" style="left: 70%; top: 59.5%;" class=""> 5</a>
+						<a href="/feriaagropecuaria/web/info/pabellon04" style="left: 57%; top: 51%;" class="active">9</a>
+						<a href="/feriaagropecuaria/web/info/montero" style="left: 73%; top: 67%;" class="">4</a>
+						<a href="/feriaagropecuaria/web/info/pabellon05" style="left: 43%; top: 67%;" class="">13</a>
+            <img src=" {{ asset('bundles/feriaagropecuariahome/images/map.jpg')  }}" alt=""/>
+        </div>
+    </div>
+    <div id="sectioDer" >
+        <div id="contenidoPunto">
+
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block javascripts %}
+
+    <script>
+        $(document).ready(function(){
+
+            $('.slider2').bxSlider({
+                minSlides: 1,
+                maxSlides: 1,
+                pager: false,
+                nextText: '>',
+                prevText: '<',
+                slideMargin: 10
+            });
+
+            $("#mapaFeria a").click(function(e){
+                e.preventDefault();
+                $("#mapaFeria a").removeClass("active");
+                $(this).addClass("active");
+                $("#contenidoPunto").html("<div class='preload'></div>");
+                $("#contenidoPunto").load($(this).attr("href"));
+            });
+
+                $("#mapaFeria a").eq({{ lugar }}).addClass("active");
+                $("#contenidoPunto").html("<div class='preload'></div>");
+                $("#contenidoPunto").load($("#mapaFeria a").eq({{ lugar }}).attr("href"));
+
+
+
+
+            //document ready
+        });//------------
+        //document ready
+
+    </script>
+
+
+
+{% endblock %}

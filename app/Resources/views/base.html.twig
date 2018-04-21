@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="{{ asset('bundles/feriaagropecuariabackend/css/bootstrap.min.css') }}"
+              rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="{{ asset('bundles/feriaagropecuariabackend/js/jquery-2.2.0.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/feriaagropecuariabackend/js/bootstrap.min.js') }}"></script>
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

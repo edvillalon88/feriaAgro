@@ -1,0 +1,43 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Foto creation{% endblock %}
+{% block body -%}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Nueva foto</h3>
+        </div>
+        <div class="panel-body">
+            {{ form_start(form) }}
+
+            {{ form_row(form.Fichero) }}
+            <br/>
+            {{ form_row(form.Descripcion) }}
+
+            <br/>
+            <label>Descripcion en Ingles</label>
+            <textarea class="form-control" required="required" name="DescripcionENG" ></textarea>
+            <br/>
+            {{ form_row(form.Album) }}
+            <br/>
+            {{ form_label(form.Fecha) }}
+            <br/>
+            {{ form_widget(form.Fecha) }}
+            <br/>
+            <br/>
+            {{ form_row(form.submit) }}
+
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('foto') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

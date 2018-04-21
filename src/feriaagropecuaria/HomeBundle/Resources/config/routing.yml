@@ -1,0 +1,65 @@
+feriaagropecuaria_home_homepage:
+    path:     /{_locale}
+    defaults: { _controller: feriaagropecuariaHomeBundle:Default:index , _locale: es }
+    requirements:
+       _locale: en|es
+
+feriaagropecuaria_home_servcios:
+    path:     /{pagina}/{_locale}
+    defaults: { _controller: feriaagropecuariaHomeBundle:Default:servicio, _locale: es }
+    requirements:
+      _locale: en|es
+
+feriaagropecuaria_home_tour:
+    path:     tour/{lugar}/{_locale}
+    defaults: { _controller: feriaagropecuariaHomeBundle:Default:tour,  _locale: es }
+    requirements:
+      _locale: en|es
+
+feriaagropecuaria_home_renders:
+    path:     tour/{lugar}/{_locale}
+    defaults: { _controller: feriaagropecuariaHomeBundle:Default:tour,  _locale: es }
+    requirements:
+      _locale: en|es
+
+feriaagropecuaria_home_tarifas:
+    path:     tarifas/lista/{_locale}
+    defaults: { _controller: feriaagropecuariaHomeBundle:Default:tarifas, _locale: es }
+    requirements:
+      _locale: en|es
+
+feriaagropecuaria_home_info:
+    path:     info/{lugar}/{_locale}
+    defaults: { _controller: feriaagropecuariaHomeBundle:Default:renderview, _locale: es }
+    requirements:
+      _locale: en|es
+
+feriaagropecuaria_home_contacto:
+    path:     /contacto/index/{_locale}
+    defaults: { _controller: feriaagropecuariaHomeBundle:Default:contacto, _locale: es }
+    requirements:
+      _locale: en|es
+
+feriaagropecuaria_home_galeria:
+    path:     /galeria/index/{_locale}
+    defaults: { _controller: feriaagropecuariaHomeBundle:Default:galeria, _locale: es }
+    requirements:
+      _locale: en|es
+
+feriaagropecuaria_home_foto:
+     path:     /galeria/fotos/{_locale}/{idAlbum}
+     defaults: { _controller: feriaagropecuariaHomeBundle:Default:cargarfotos, _locale: es }
+
+feriaagropecuaria_home_enviar_contacto:
+     path:     /contacto/enviar/
+     defaults: { _controller: "feriaagropecuariaHomeBundle:Default:sendcorreo" }
+     methods:  [POST]
+
+feriaagropecuaria_home_prodcutos:
+    path:     /productos/index/{_locale}/{pagina}
+    defaults: { _controller: feriaagropecuariaHomeBundle:Default:productos }
+
+feriaagropecuaria_home_prodcuto:
+    path:     /producto/{_locale}/{pagina}
+    defaults: { _controller: feriaagropecuariaHomeBundle:Default:producto, pagina: 0}
+

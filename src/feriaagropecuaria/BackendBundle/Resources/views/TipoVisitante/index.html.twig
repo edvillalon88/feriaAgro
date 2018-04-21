@@ -1,0 +1,39 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Tipo de Visitante lis{% endblock %}
+
+{% block body -%}
+
+
+<div class="table-responsive">
+    <table class="records_list table table-striped">
+        <thead>
+            <tr>
+                <th>Idtipovisitante</th>
+                <th>Nombre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('tipovisitante_show', { 'id': entity.idTipoVisitante }) }}">{{ entity.idTipoVisitante }}</a></td>
+                <td>{{ entity.Nombre }}</td>
+                <td>
+
+                        <a href="{{ path('tipovisitante_show', { 'id': entity.idTipoVisitante }) }}"><button type="button" class="btn btn-default">show</button></a>
+
+                        <a href="{{ path('tipovisitante_edit', { 'id': entity.idTipoVisitante }) }}"><button type="button" class="btn btn-default">edit</button></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+            <a href="{{ path('tipovisitante_new') }}">
+                <button type="button" class="btn btn-primary">Create a new entry</button>
+            </a>
+
+    {% endblock %}

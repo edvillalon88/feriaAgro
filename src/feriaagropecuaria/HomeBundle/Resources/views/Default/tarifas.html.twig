@@ -1,0 +1,32 @@
+{% extends "::sitiolayaout.html.twig" %}
+
+{% block selector  %}service{% endblock %}
+
+{% block body -%}
+
+
+<section>
+    <h2>Tarifa de precios<br /><span>FIAGROP</span></h2>
+    <div >
+        <table border="0" cellspacing="0" cellpadding="0" style="width: 80%; max-width: 1024px; margin: auto " >
+            <tr>
+                <td><p>DESCRIPCIÓN</p></td>
+                <td><p>PRECIO CUC POR M2:</p></td>
+
+            </tr>
+        {% for entity in entities %}
+
+            <tr>
+                <td><p>{{ entity.Nombre }}</p></td>
+                <td><p>{{ entity.Precio }}</p></td>
+
+            </tr>
+
+        {% endfor %}
+
+         </table>
+    </div>
+
+
+ </section>
+{% endblock %}

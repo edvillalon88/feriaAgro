@@ -1,0 +1,30 @@
+tipovisitante:
+    path:     /
+    defaults: { _controller: "feriaagropecuariaBackendBundle:TipoVisitante:index" }
+
+tipovisitante_show:
+    path:     /{id}/show
+    defaults: { _controller: "feriaagropecuariaBackendBundle:TipoVisitante:show" }
+
+tipovisitante_new:
+    path:     /new
+    defaults: { _controller: "feriaagropecuariaBackendBundle:TipoVisitante:new" }
+
+tipovisitante_create:
+    path:     /create
+    defaults: { _controller: "feriaagropecuariaBackendBundle:TipoVisitante:create" }
+    methods:  POST
+
+tipovisitante_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "feriaagropecuariaBackendBundle:TipoVisitante:edit" }
+
+tipovisitante_update:
+    path:     /{id}/update
+    defaults: { _controller: "feriaagropecuariaBackendBundle:TipoVisitante:update" }
+    methods:  [POST, PUT]
+
+tipovisitante_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "feriaagropecuariaBackendBundle:TipoVisitante:delete" }
+    methods:  [POST, DELETE]

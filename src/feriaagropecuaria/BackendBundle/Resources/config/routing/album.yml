@@ -1,0 +1,30 @@
+album:
+    path:     /
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Album:index" }
+
+album_show:
+    path:     /{id}/show
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Album:show" }
+
+album_new:
+    path:     /new
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Album:new" }
+
+album_create:
+    path:     /create
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Album:create" }
+    methods:  POST
+
+album_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Album:edit" }
+
+album_update:
+    path:     /{id}/update
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Album:update" }
+    methods:  [POST, PUT]
+
+album_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Album:delete" }
+    methods:  [POST, DELETE]

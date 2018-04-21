@@ -1,0 +1,27 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}País creation{% endblock %}
+
+{% block body -%}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Nuevo País</h3>
+    </div>
+    <div class="panel-body">
+        {{ form_start(form) }}
+        {{ form_row(form.Nombre) }}
+        <br/>
+        {{ form_row(form.submit) }}
+        {{ form_end(form) }}
+    </div>
+</div>
+
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('pais') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

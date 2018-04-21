@@ -1,0 +1,449 @@
+{% extends '::sitiolayaout.html.twig' %}
+{% block selector  %}service{% endblock %}
+{% block body -%}
+
+<style type="text/css">
+    ul
+    {
+        margin: 0px;
+        padding: 0px;
+    }
+    li.pro, li.cpro
+    {
+        list-style: none;
+    }
+    li.pro  div,  li.cpro div
+    {
+        display: inline;
+        margin-right: 5px;
+    }
+    li.pro,  li.cpro
+    {
+        margin-bottom: 10px;
+    }
+   /* .header  > label
+    {
+        margin-right: 10px;
+    }*/
+    h4{display: inline;}
+    label  { display: inline !important; margin-right: 5px;}
+
+    .tags input { margin: 0px !important; }
+</style>
+
+
+
+<section id="galeria">
+    <h2>Crear <span>Solicitud</span></h2>
+    <br/>
+    {{ form_start(edit_form) }}
+
+    <div id="sectioIzq" style="margin-top: 0px" >
+
+         <div class="areaForm">
+
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Nombre</label>
+                    <div class="controls">
+                        {{ form_widget(edit_form.Nombre) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Tipo de Visitante</label>
+                    <div class="controls">
+                        {{ form_widget(edit_form.TipoVisitante) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Nombre de Firma</label>
+                    <div class="controls">
+                        {{ form_widget(edit_form.NombreFirma) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Direccion</label>
+                    <div class="controls">
+                        {{ form_widget(edit_form.Direccion) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Pais</label>
+                    <div class="controls">
+                        {{ form_widget(edit_form.Pais) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div id="org">
+                        <label class="control-label" for="inputNombre">Organismo</label>
+                        <div class="controls">
+
+                            {{ form_widget(edit_form.Organismo) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Codigo Postal </label>
+                    <div class="controls">
+
+                        {{ form_widget(edit_form.CodigoPostal) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Telefono</label>
+                    <div class="controls">
+                        {{ form_widget(edit_form.Telefono) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Fax</label>
+                    <div class="controls">
+                        {{ form_widget(edit_form.Fax) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">email</label>
+                    <div class="controls">
+                        {{ form_widget(edit_form.email) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Area</label>
+                    <div class="controls">
+                        {{ form_widget(edit_form.Area) }}
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Metros Cuadrados</label>
+                    <div class="controls">
+                        {{ form_widget(edit_form.Metros) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Codigo de Contrato</label>
+                    <div class="controls">
+                        {{ form_widget(edit_form.CodigoContrato) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Sala</label>
+                    <div class="controls">
+                        {{ form_widget(edit_form.Sala) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Stan</label>
+                    <div class="controls">
+                        {{ form_widget(edit_form.Stan) }}
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="inputNombre">Rotulo</label>
+                    <div class="controls">
+
+                        {{ form_widget(edit_form.Rotulo) }}
+                    </div>
+                </div>
+
+
+        </div>
+
+
+    </div>
+    <div id="sectioDer">
+         <div class="control-group">
+
+                 <div class="areaForm">
+                        <div class="controls">
+                            <p>Presentamos los siguientes productos:</p>
+                            {{ form_widget(edit_form.Productos) }}
+                        </div>
+
+                        <div class="control-group">
+
+                            <div class="controls">
+                                <p>Representamos a  las  siguientes Firmas:</p>
+                                {{ form_widget(edit_form.Firmas) }}
+                            </div>
+                        </div>
+                        <div class="control-group">
+
+                            <div class="controls">
+                                <p>Especificar  aquí  requerimientos de servicios eléctricos, salas de conferencias, interpretes etc.</p>
+                                {{ form_widget(edit_form.Observaciones) }}
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="control-group">
+                            <div class="controls">
+                                <ul class="tags" data-prototype="{{ form_widget(edit_form.solicitudproductos.vars.prototype)|e }}">
+
+                                    <div class="header btnAgregarInsumo" > <label><h4>Agregar Servcios o Insumos</h4></label>
+
+                                    {# iterate over each existing tag and render its only field: name #}
+                                        {% for tag in edit_form.solicitudproductos %}
+                                            <li class="pro"><div>{{ form_row(tag.ServicioMobiliariaProducto) }}</div><div>{{ form_row(tag.Cantidad) }}</div> </li>
+                                        {% endfor %}
+
+                                    </div><br/>
+
+
+
+
+                                </ul>
+                             </div>
+                            <br/>
+                        </div>
+
+                        {% if entity.aprobada == true %}
+
+                        <div class="control-group">
+                            <div class="controls">
+                                <ul class="credenciales" data-prototype="{{ form_widget(edit_form.Credenciales.vars.prototype)|e }}">
+                                    <h4> Usted puede solicitar un maximo de {{ Cantidad }} credenciales</h4>
+
+                                    <h4>Puede solicitar <span id="CantidadCredenciales"></span> credenciales</h4>
+
+                                    <br/>
+                                    <br/>
+                                    <div class="cheader btnAgregarInsumo" > <label><h4>Agregar Credencial</h4></label>
+
+
+                {# iterate over each existing tag and render its only field: name #}
+                                    {% for tag in edit_form.Credenciales %}
+                                        <li class="cpro input-group"><div >{{ form_row(tag.Nombre) }}{{ form_row(tag.Ci) }}{{ form_row(tag.Pais) }}{{ form_row(tag.Cargo) }}</div> </li>
+                                    {% endfor %}
+
+
+                                    </div><br/>
+
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        {% endif %}
+                        {{ form_row(edit_form._token) }}
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="submit" value="Actulizar Solicitud">
+                            </div>
+                        </div>
+                </div>
+        </div>
+
+    </div>
+    </form>
+</section>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+
+</ul>
+
+<div id="solicitudextra" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+        <div class="modal-header">
+            <h3 id="myModalLabel">Credenciales <span>Extras</span></h3>
+        </div>
+        <div class="modal-body">
+            <div>
+               Usted desea Credenciales extra?
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true" id="cancelar">Cancelar</button>
+            <button id="Aceptar"> Aceptar </button>
+        </div>
+    </div>
+    {% endblock %}
+    {% block javascripts -%}
+    <script type="text/javascript">
+        var $collectionHolder;
+        var $collectionHolderC;
+        var cantSolicitudesPermitidas = {{ Cantidad }};
+        var cantSolicitudes = cantSolicitudesPermitidas;
+        var solcitudextra = false;
+        // setup an "add a tag" link
+        var $addSolicitudLink = $('<button class="add_solicitud_link glyphicon glyphicon-plus btn btn-default"><strong>+</strong></button>');
+        var $newLinkLi = $('<span></span>').append($addSolicitudLink);
+
+        var $addCredencialLink = $('<button class="add_credencial_link glyphicon glyphicon-plus btn btn-default"><strong>+</strong></button>');
+        var $newLinkLiC = $('<span></span>').append($addCredencialLink);
+
+        function addTagForm($collectionHolder, $newLinkLi) {
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolder.data('prototype');
+
+            // get the new index
+            var index = $collectionHolder.data('index');
+
+            // Replace '__name__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            var newForm = prototype.replace(/__name__/g, index);
+
+
+            // increase the index with one for the next item
+            $collectionHolder.data('index', index + 1);
+
+            // Display the form in the page in an li, before the "Add a tag" link li
+            if($collectionHolder.hasClass("credenciales"))
+            {
+                //esta es para las credenciales------------------------------
+
+                var $newFormLi = $('<li class="cpro input-group "></li>').append(newForm);
+
+            }else
+            {
+                var $newFormLi = $('<li class="pro input-group"></li>').append(newForm);
+            }
+
+            $newLinkLi.after($newFormLi);
+            addTagFormDeleteLink($newFormLi);
+        }
+
+
+
+        function addTagFormDeleteLink($tagFormLi) {
+
+            if($tagFormLi.hasClass("cpro"))
+            {
+
+                var $removeFormA = $('<button class="glyphicon glyphicon-remove btn btn-danger  cbutton"><strong>X</strong></button>');
+
+            }else
+            {
+                var $removeFormA = $('<button class="glyphicon glyphicon-remove btn btn-danger "><strong>X</strong></button>');
+            }
+
+            $tagFormLi.append($removeFormA);
+
+            $removeFormA.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // remove the li for the tag form
+                $tagFormLi.remove();
+
+                if($(this).hasClass("cbutton"))
+                {
+                    var items = $("ul.credenciales  li").length;
+                    if(cantSolicitudes < cantSolicitudesPermitidas && items < cantSolicitudesPermitidas)
+                    {
+                        cantSolicitudes ++;
+                        updateText(cantSolicitudes);
+                    }
+                }
+            });
+        }
+
+
+        //esto es nada mas para actualizar el texto de la cantidad de credenciales
+         function updateText(cantidad)
+         {
+             $("#CantidadCredenciales").html(cantidad);
+         }
+        //--------------------------------------
+
+
+
+        $(document).ready(function() {
+
+            // Esto es para ver cuantas credenciales tiene la solicitud y si puede insertar mas
+            var items = $("ul.credenciales  li").length;
+            var cants = cantSolicitudesPermitidas - items;
+            cantSolicitudes = ( cants >= 0 ? cants : 0  );
+            updateText(cantSolicitudes);
+            // Get the ul that holds the collection of tags
+            $collectionHolder = $('ul.tags');
+            $collectionHolderC = $('ul.credenciales');
+
+            // add the "add a tag" anchor and li to the tags ul
+            // $collectionHolder.append($newLinkLi);
+            var li = $(".header li");
+            if(li.length > 0)
+            {
+                $(li[0]).before( $newLinkLi);
+            }else
+            {
+                $(".header").append($newLinkLi);
+            }
+
+
+            var cli = $(".cheader li");
+            if(cli.length > 0)
+            {
+                $(cli[0]).before($newLinkLiC);
+            }else
+            {
+                $(".cheader").append($newLinkLiC);
+            }
+
+            // count the current form inputs we have (e.g. 2), use that as the new
+            // index when inserting a new item (e.g. 2)
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
+            $collectionHolderC.data('index', $collectionHolderC.find(':input').length);
+
+            $addSolicitudLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new tag form (see next code block)
+                addTagForm($collectionHolder, $newLinkLi);
+            });
+
+            $addCredencialLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+
+              if(cantSolicitudes > 0)
+              {
+                  // add a new tag form (see next code block)
+                  addTagForm($collectionHolderC, $newLinkLiC);
+                  cantSolicitudes -- ;
+                  updateText(cantSolicitudes);
+
+              }
+              else
+              {
+                  if(!solcitudextra)
+                  {
+                      $("#solicitudextra").modal("show");
+
+                  }else
+                  {
+                      addTagForm($collectionHolderC, $newLinkLiC);
+                  }
+
+
+              }
+
+
+
+
+            });
+
+
+            // add a delete link to all of the existing tag form li elements
+            $collectionHolder.find('.pro').each(function() {
+                addTagFormDeleteLink($(this));
+            });
+            $collectionHolderC.find('.cpro').each(function() {
+                addTagFormDeleteLink($(this));
+            });
+
+            $("#Aceptar").click(function(){
+
+                solcitudextra = true;
+                addTagForm($collectionHolderC, $newLinkLiC);
+                $("#solicitudextra").modal("hide");
+
+            })
+        });
+    </script>
+    {% endblock %}

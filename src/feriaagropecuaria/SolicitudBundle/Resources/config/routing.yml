@@ -1,0 +1,7 @@
+feriaagropecuaria_solicitud_solicitud_participacion:
+    resource: "@feriaagropecuariaSolicitudBundle/Resources/config/routing/solicitudparticipacion.yml"
+    prefix:   solicitud/solicitud_participacion
+
+feriaagropecuaria_solicitud_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: feriaagropecuariaSolicitudBundle:Default:index }

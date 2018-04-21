@@ -1,0 +1,30 @@
+organismo:
+    path:     /
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Organismo:index" }
+
+organismo_show:
+    path:     /{id}/show
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Organismo:show" }
+
+organismo_new:
+    path:     /new
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Organismo:new" }
+
+organismo_create:
+    path:     /create
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Organismo:create" }
+    methods:  POST
+
+organismo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Organismo:edit" }
+
+organismo_update:
+    path:     /{id}/update
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Organismo:update" }
+    methods:  [POST, PUT]
+
+organismo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Organismo:delete" }
+    methods:  [POST, DELETE]

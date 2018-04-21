@@ -1,0 +1,210 @@
+{% extends "::sitiolayaout.html.twig" %}
+
+{% block selector  %}service{% endblock %}
+
+{% block body -%}
+
+<div id="main">
+<section id="services">
+ <div class="slider1" id="sliderLocales" >
+   <div class="slide">
+  	   	<div class="infoSlide">
+    	<h3><span> 01 </span> {{ 'Textos.TituloSalonFerial' | trans |raw }}</h3>
+        <p>{{ 'Textos.SalonFerial' | trans |raw }}</p>
+
+      <h4>{{ 'Labels.Precio' | trans |raw }}  <span>1714.08 cup</span> </h4><a href="{{ path("feriaagropecuaria_home_tour", { 'lugar' : 3 ,'_locale': app.request.locale}) }}" class="btnVerde">{{ 'Labels.VerMapa' | trans |raw }}</a>
+
+    </div>
+    <div>
+    	<div class="galeriaBig"><img  src="{{ asset('bundles/feriaagropecuariahome/images/locales/salon-ferial.jpg') }}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>
+
+
+
+    </div>
+   </div>
+    <div class="slide">
+  	   	<div class="infoSlide">
+    	<h3><span> 02 </span> {{ 'Textos.TituloBarRojo' | trans |raw }}</h3>
+        {{ 'Textos.BarRojo' | trans |raw }}
+
+      <h4>{{ 'Labels.Precio' | trans |raw }}<span>  898.63 cup </span> </h4><a href="{{ path("feriaagropecuaria_home_tour", { '_locale': 'es', 'lugar' : 4 }) }}" class="btnVerde">{{ 'Labels.VerMapa' | trans |raw }}</a>
+
+    </div>
+    <div>
+    	<div class="galeriaBig"><img  src="{{ asset('bundles/feriaagropecuariahome/images/locales/bar-rojo.jpg') }}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>
+
+
+
+    </div>
+   </div>
+   <div class="slide">
+  	   	<div class="infoSlide">
+    	<h3><span> 03 </span> {{ 'Textos.TituloSalonReuniones' | trans |raw }}</h3>
+        {{ 'Textos.SalonReuniones' | trans |raw }}
+
+      <h4>{{ 'Labels.Precio' | trans |raw }}<span>  898.77 cup </span> </h4><a href="{{ path("feriaagropecuaria_home_tour", { '_locale': app.request.locale, 'lugar' : 5 }) }}" class="btnVerde">{{ 'Labels.VerMapa' | trans |raw }}</a>
+
+    </div>
+    <div>
+    	<div class="galeriaBig"><img  src="{{ asset('bundles/feriaagropecuariahome/images/locales/salon-reuniones.jpg') }}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>
+
+
+
+    </div>
+   </div>
+
+    <div class="slide">
+  	   	<div class="infoSlide">
+    	<h3><span> 04 </span> {{ 'Textos.TituloCremeria' | trans |raw }}</h3>
+        {{ 'Textos.Cremeria' | trans |raw }}
+
+     <h4>{{ 'Labels.Precio' | trans |raw }}<span>  898.77 cup </span> </h4><a href="{{ path("feriaagropecuaria_home_tour", { '_locale': app.request.locale, 'lugar' : 6 }) }}" class="btnVerde">{{ 'Labels.VerMapa' | trans |raw }}</a>
+
+    </div>
+    <div>
+    	<div class="galeriaBig"><img  src="{{ asset('bundles/feriaagropecuariahome/images/locales/grand-stand.jpg') }}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>
+
+
+
+    </div>
+   </div>
+
+   <div class="slide">
+  	   	<div class="infoSlide">
+    	<h3><span> 05 </span> {{ 'Textos.TituloSalonConferencia' | trans |raw }}</h3>
+        {{ 'Textos.SalonConferencia' | trans |raw }}
+
+      <h4>{{ 'Labels.Precio' | trans |raw }}<span>  903.95 cup </span> </h4><a href="{{ path("feriaagropecuaria_home_tour", { '_locale': app.request.locale, 'lugar' : 7 }) }}" class="btnVerde">{{ 'Labels.VerMapa' | trans |raw }}</a>
+
+    </div>
+    <div>
+    	<div class="galeriaBig"><img  src="{{ asset('bundles/feriaagropecuariahome/images/locales/salon-conferencias.jpg') }}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>
+
+
+
+    </div>
+   </div>
+
+   
+
+   <div class="slide">
+  	   	<div class="infoSlide">
+    	<h3><span> 07 </span> {{ 'Textos.TituloPabellon1' | trans |raw }}</h3>
+        {{ 'Textos.Pabellon1' | trans |raw }}
+
+      <h4>{{ 'Labels.Precio' | trans |raw }}<span>  1634.41 cup </span> </h4><a href="{{ path("feriaagropecuaria_home_tour", { '_locale': app.request.locale, 'lugar' : 8 }) }}" class="btnVerde">{{ 'Labels.VerMapa' | trans |raw }}</a>
+
+    </div>
+    <div>
+    	<div class="galeriaBig"><img  src="{{ asset('bundles/feriaagropecuariahome/images/locales/pabellon3.jpg') }}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>
+
+
+
+    </div>
+   </div>
+
+    <div class="slide">
+  	   	<div class="infoSlide">
+    	<h3><span> 07 </span> {{ 'Textos.TituloPabellon2' | trans |raw }}</h3>
+        {{ 'Textos.Pabellon2' | trans |raw }}
+
+      <h4>{{ 'Labels.Precio' | trans |raw }}<span>  1636.61 cup </span> </h4><a href="{{ path("feriaagropecuaria_home_tour", { '_locale': app.request.locale, 'lugar' : 9 }) }}" class="btnVerde">{{ 'Labels.VerMapa' | trans |raw }}</a>
+
+    </div>
+    <div>
+    	<div class="galeriaBig"><img  src="{{ asset('bundles/feriaagropecuariahome/images/locales/pabellon3.jpg') }}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>
+
+
+
+    </div>
+   </div>
+
+
+<div class="slide">
+  	   	<div class="infoSlide">
+    	<h3><span> 06 </span> {{ 'Textos.TituloPabellon3' | trans |raw }}</h3>
+        {{ 'Textos.Pabellon3' | trans |raw }}
+
+      <h4>{{ 'Labels.Precio' | trans |raw }}<span>  1636.61 cup </span> </h4><a href="{{ path("feriaagropecuaria_home_tour", { '_locale': app.request.locale, 'lugar' : 10 }) }}" class="btnVerde">{{ 'Labels.VerMapa' | trans |raw }}</a>
+
+    </div>
+    <div>
+    	<div class="galeriaBig"><img  src="{{ asset('bundles/feriaagropecuariahome/images/locales/pabellon3.jpg') }}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>
+
+
+
+    </div>
+   </div>
+
+
+
+   <div class="slide">
+  	   	<div class="infoSlide">
+    	<h3><span> 07 </span> {{ 'Textos.TituloPabellon4' | trans |raw }}</h3>
+        {{ 'Textos.Pabellon4' | trans |raw }}
+
+      <h4>{{ 'Labels.Precio' | trans |raw }}<span>  890.26 cup </span> </h4><a href="{{ path("feriaagropecuaria_home_tour", { '_locale': app.request.locale, 'lugar' : 11 }) }}" class="btnVerde">Ver en el mapa</a>
+
+    </div>
+    <div>
+    	<div class="galeriaBig"><img  src="{{ asset('bundles/feriaagropecuariahome/images/locales/pabellon3.jpg') }}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>
+
+
+
+    </div>
+   </div>
+
+   <div class="slide">
+  	   	<div class="infoSlide">
+    	<h3><span> 08 </span> {{ 'Textos.TituloBarAzul' | trans |raw }}</h3>
+        {{ 'Textos.BarAzul' | trans |raw }}
+
+      <!--<h4>{{ 'Labels.Precio' | trans |raw }}<span>  000 cup </span> </h4>--><a href="{{ path("feriaagropecuaria_home_tour", { '_locale': app.request.locale, 'lugar' : 2 }) }}" class="btnVerde">{{ 'Labels.VerMapa' | trans |raw }}</a>
+
+    </div>
+    <div>
+    	<div class="galeriaBig"><img  src="{{ asset('bundles/feriaagropecuariahome/images/locales/bar-azul.jpg') }}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>
+
+
+
+    </div>
+   </div>
+
+   <div class="slide">
+  	   	<div class="infoSlide">
+    	<h3><span> 09 </span> {{ 'Textos.TituloRestaurantMontero' | trans |raw }}</h3>
+       {{ 'Textos.RestaurantMontero' | trans |raw }}
+
+      <!--<h4>{{ 'Labels.Precio' | trans |raw }}<span>  899.09 cup </span> </h4>--><a href="{{ path("feriaagropecuaria_home_tour", { '_locale': app.request.locale, 'lugar' : 12 }) }}" class="btnVerde">{{ 'Labels.VerMapa' | trans |raw }}</a>
+
+    </div>
+    <div>
+    	<div class="galeriaBig"><img  src="{{ asset('bundles/feriaagropecuariahome/images/locales/el-montero.jpg') }}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>
+
+
+
+    </div>
+   </div>
+
+   <div class="slide">
+  	   	<div class="infoSlide">
+    	<h3><span> 10 </span> {{ 'Textos.TituloMotelGanadero' | trans |raw }}</h3>
+        {{ 'Textos.MotelGanadero' | trans |raw }}
+
+      <!--<h4>{{ 'Labels.Precio' | trans |raw }}<span>  000 cup </span> </h4>--><a href="{{ path("feriaagropecuaria_home_tour", { '_locale': app.request.locale, 'lugar' : 0 }) }}" class="btnVerde">{{ 'Labels.VerMapa' | trans |raw }}</a>
+
+    </div>
+    <div>
+    	<div class="galeriaBig"><img  src="{{ asset('bundles/feriaagropecuariahome/images/locales/el-motel.jpg') }}"></div><img src="{{ asset('bundles/feriaagropecuariahome/images/home/galery-shadow.png') }}" alt="" class="shadowGalery"/>
+
+
+
+    </div>
+   </div>
+
+  </div>
+
+</div>
+</section>
+  </div>
+{% endblock %}

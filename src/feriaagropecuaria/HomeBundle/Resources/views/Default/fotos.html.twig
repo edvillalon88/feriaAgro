@@ -1,0 +1,38 @@
+<h4><a href="#" id="irAtras"><img src="img/go-back.png" alt=""/></a>{{ album.nombre }}</h4>
+<ul class="galeriaSmall">
+    {% for foto in entities %}
+
+        <li>
+        {% if foto.tipo == 1 %}
+
+            <a href="{{ asset(foto.webPath) }}" class="fotos"><img src="{{ web_image(foto.webPath).resize(100,100)}}" alt=""/></a>
+
+
+        {% else %}
+
+            <video  controls    muted class="fotos">
+                <source src="{{ asset(foto.webPath) }}" type="video/mp4">
+
+                Your browser does not support the video tag.
+            </video>
+
+        {% endif %}
+        </li>
+    {% else %}
+
+        No hay ninguna archivo para este album
+
+    {% endfor %}
+</ul>
+
+
+<script>
+
+    $(document).ready(function(){
+        $(".galeriaSmall a").colorbox({rel:'fotos', transition:"fade"});
+
+        if(detectPantalla() == "movil" || detectPantalla() == "tablet"){
+            $("#irAtras").show();
+        }
+    });
+</script>

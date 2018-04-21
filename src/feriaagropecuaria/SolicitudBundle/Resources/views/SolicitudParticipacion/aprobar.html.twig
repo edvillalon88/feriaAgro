@@ -1,0 +1,91 @@
+{% extends '::adminlayaout.html.twig' %}
+
+{% block body -%}
+    <h1>SolicitudParticipacion</h1>
+
+    <table class="record_properties">
+        <tbody>
+        <tr>
+            <th>Idsolicitudparticipacion</th>
+            <td>{{ entity.idSolicitudParticipacion }}</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>{{ entity.Nombre }}</td>
+        </tr>
+        <tr>
+            <th>Nombrefirma</th>
+            <td>{{ entity.NombreFirma }}</td>
+        </tr>
+        <tr>
+            <th>Direccion</th>
+            <td>{{ entity.Direccion }}</td>
+        </tr>
+        <tr>
+            <th>Codigopostal</th>
+            <td>{{ entity.CodigoPostal }}</td>
+        </tr>
+        <tr>
+            <th>Telefono</th>
+            <td>{{ entity.Telefono }}</td>
+        </tr>
+        <tr>
+            <th>Fax</th>
+            <td>{{ entity.Fax }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ entity.email }}</td>
+        </tr>
+        <tr>
+            <th>Metros</th>
+            <td>{{ entity.Metros }}</td>
+        </tr>
+        <tr>
+            <th>Productos</th>
+            <td>{{ entity.Productos }}</td>
+        </tr>
+        <tr>
+            <th>Firmas</th>
+            <td>{{ entity.Firmas }}</td>
+        </tr>
+        <tr>
+            <th>Observaciones</th>
+            <td>{{ entity.Observaciones }}</td>
+        </tr>
+        <tr>
+            <th>Identificador</th>
+            <td>{{ entity.identificador }}</td>
+        </tr>
+        <tr>
+            <th>Fecha Creado</th>
+            <td>{{ entity.FechaCreado|date('Y-m-d H:i:s') }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+<br/>
+<br/>
+    <form action="{{ path('solicitud_participacion_aprobada', {'id': entity.idSolicitudParticipacion}) }}" method="POST" id="envio">
+
+        <input type="hidden" name="valor"id="valor">
+        <button class="btn btn-primary"  id="aceptar" data-value="1"> Aceptar </button>
+        <button class="btn btn-danger"  id="Rechazar" data-value="2"> Rechezar </button>
+    </form>
+
+
+<script>
+    $(document).ready(function(){
+
+
+        $("#aceptar, #Rechazar").click(function(e){
+
+            e.preventDefault();
+            $("#valor").val($(this).attr("data-value"));
+
+            $("#envio").submit();
+        })
+
+    })
+</script>
+{% endblock %}

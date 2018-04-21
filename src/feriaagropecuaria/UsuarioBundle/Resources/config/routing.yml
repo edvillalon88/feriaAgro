@@ -1,0 +1,35 @@
+feriaagropecuaria_usuario_homepage:
+    path:     usuario/hello/{name}
+    defaults: { _controller: feriaagropecuariaUsuarioBundle:Default:index }
+
+login:
+    path:     usuario/login
+    defaults: { _controller: feriaagropecuariaUsuarioBundle:Usuario:login }
+
+usuario_login_check:
+    path: usuario/login_check
+
+usuario_logout:
+    path: usuario/logout
+
+usuario_registro:
+    path: usuario/registro
+    defaults: { _controller: feriaagropecuariaUsuarioBundle:Usuario:registro }
+
+_usuario_registro:
+     path: usuario/registro/
+     defaults: { _controller: feriaagropecuariaUsuarioBundle:Usuario:registro }
+
+lista_usuarios:
+     path: usuario/listar
+     defaults: { _controller: feriaagropecuariaUsuarioBundle:Usuario:usuarios }
+
+usuario_create:
+    path: usuario/crear
+    defaults: { _controller: feriaagropecuariaUsuarioBundle:Usuario:create }
+    methods:  POST
+
+#usuario_logout:
+#    path: usuario/logaout
+#    defaults: { _controller: feriaagropecuariaUsuarioBundle:Usuario:logout }
+#logoutAction

@@ -1,0 +1,57 @@
+feriaagropecuaria_backend_evento:
+    resource: "@feriaagropecuariaBackendBundle/Resources/config/routing/evento.yml"
+    prefix:   /evento
+
+feriaagropecuaria_backend_organismo:
+    resource: "@feriaagropecuariaBackendBundle/Resources/config/routing/organismo.yml"
+    prefix:   /admin/organismo
+
+feriaagropecuaria_backend_tipovisitante:
+    resource: "@feriaagropecuariaBackendBundle/Resources/config/routing/tipovisitante.yml"
+    prefix:   /admin/tipovisitante
+
+feriaagropecuaria_backend_smp:
+    resource: "@feriaagropecuariaBackendBundle/Resources/config/routing/serviciomobiliariaproducto.yml"
+    prefix:   /admin/smp
+
+feriaagropecuaria_backend_area:
+    resource: "@feriaagropecuariaBackendBundle/Resources/config/routing/area.yml"
+    prefix:   /admin/area
+
+feriaagropecuaria_backend_pais:
+    resource: "@feriaagropecuariaBackendBundle/Resources/config/routing/pais.yml"
+    prefix:   /admin/pais
+
+feriaagropecuaria_backend_fotoservicio:
+    resource: "@feriaagropecuariaBackendBundle/Resources/config/routing/fotoservicio.yml"
+    prefix:   /admin/fotoservicio
+
+feriaagropecuaria_backend_producto:
+    resource: "@feriaagropecuariaBackendBundle/Resources/config/routing/producto.yml"
+    prefix:   /admin/producto
+
+feriaagropecuaria_backend_servicio:
+    resource: "@feriaagropecuariaBackendBundle/Resources/config/routing/servicio.yml"
+    prefix:   /admin/servicio
+
+feriaagropecuaria_backend_foto:
+    resource: "@feriaagropecuariaBackendBundle/Resources/config/routing/foto.yml"
+    prefix:   /admin/foto
+
+feriaagropecuaria_backend_album:
+    resource: "@feriaagropecuariaBackendBundle/Resources/config/routing/album.yml"
+    prefix:   /admin/album
+
+feriaagropecuaria_backend_evento:
+    resource: "@feriaagropecuariaBackendBundle/Resources/config/routing/evento.yml"
+    prefix:   /admin/evento
+
+
+index:
+    path:     /admin/index
+    defaults: { _controller: feriaagropecuariaBackendBundle:Inicio:index }
+
+_index:
+    path:     /admin/
+    defaults: { _controller: feriaagropecuariaBackendBundle:Inicio:index }
+

@@ -1,0 +1,34 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Fotos de Servicio{% endblock %}
+
+{% block body -%}
+
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idfotoservicio</th>
+                <td>{{ entity.idFotoServicio }}</td>
+            </tr>
+            <tr>
+                <th>Foto</th>
+                <td>{{ entity.Foto }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('fotoservicio') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('fotoservicio_edit', { 'id': entity.idFotoServicio }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

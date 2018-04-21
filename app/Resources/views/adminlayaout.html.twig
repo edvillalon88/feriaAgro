@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link href="{{ asset('bundles/feriaagropecuariabackend/css/bootstrap.min.css') }}"
+          rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="{{ asset('bundles/feriaagropecuariabackend/js/jquery-2.2.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/feriaagropecuariabackend/js/bootstrap.min.js') }}"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+
+    <div class="container-fluid">
+
+            <ul class="nav navbar-nav">
+                <li ><a href="{{ path('_index') }}">Inicio</a>
+                <li ><a href="{{ path('evento') }}">Eventos</a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nomencladores <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li ><a href="{{ path('pais') }}">Paises/Provincias</a></li>
+                        <li ><a href="{{ path('area') }}">Areas</a></li>
+                        <li ><a href="{{ path('tipovisitante') }}">Tipos de Visiatntes</a></li>
+                        <li ><a href="{{ path('organismo') }}">Organismos</a></li>
+
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catalogos <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li ><a href="{{ path('album') }}">Albunes</a></li>
+                        <li ><a href="{{ path('foto') }}">Archivos(fotos/Videos)</a></li>
+                        <li ><a href="{{ path('servicio') }}">Servicios</a></li>
+                        <li ><a href="{{ path('fotoservicio') }}">Fotos de Servicio</a></li>
+                        <li ><a href="{{ path('producto') }}">Productos</a></li>
+                        <li ><a href="{{ path('smp') }}">Servicios, Mobiliarias y Productos</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuarios <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li ><a href="{{ path('lista_usuarios') }}">Usuarios</a></li>
+                        <li ><a href="{{ path('usuario_registro') }}">Crear Usuario</a></li>
+
+                    </ul>
+                </li>
+                <li ><a href="{{ path('solicitud_participacion') }}">Solicitudes</a>
+
+
+
+
+
+
+
+
+
+            </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{ path('usuario_logout') }}">Salir</a></li>
+
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="page-header">
+        <h1>{% block titulo %}{% endblock %}</h1>
+    </div>
+    {% block body %}{% endblock %}
+</div>
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>
+

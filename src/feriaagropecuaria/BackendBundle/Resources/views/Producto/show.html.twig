@@ -1,0 +1,54 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Producto{% endblock %}
+
+{% block body -%}
+
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idproducto</th>
+                <td>{{ entity.idProducto }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.Nombre }}</td>
+            </tr>
+            <tr>
+                <th>Foto1</th>
+                <td>{{ entity.Foto1 }}</td>
+            </tr>
+            <tr>
+                <th>Foto2</th>
+                <td>{{ entity.Foto2 }}</td>
+            </tr>
+            <tr>
+                <th>Foto3</th>
+                <td>{{ entity.Foto3 }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ entity.Descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Precio</th>
+                <td>{{ entity.precio }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('producto') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('producto_edit', { 'id': entity.idProducto }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

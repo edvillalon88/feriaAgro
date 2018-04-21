@@ -1,0 +1,186 @@
+{% extends '::sitiolayaout.html.twig' %}
+{% block selector  %}service{% endblock %}
+{% block body -%}
+<style>
+    form
+    {
+        display: inline-block !important;
+        width: 25% !important;
+    }
+</style>
+
+<section id="showSolicitud" >
+    <h2>Solicitud de <span>Inscripcion</span></h2>
+    <div style="margin: auto; width: 80%; max-width: 1024px; text-align: center; margin-bottom: 20px;">
+        <table border="0" cellspacing="0" cellpadding="0" >
+
+            <tr>
+                <td> <p class="aspecto">Id</p></td>
+                <td><p>{{ entity.idSolicitudParticipacion }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Nombre</p></td>
+                <td><p>{{ entity.Nombre }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Nombre de firma</p></td>
+                <td><p>{{ entity.NombreFirma }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Dirección</p></td>
+                <td><p>{{ entity.Direccion }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">País</p></td>
+                <td><p>{{ entity.pais }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Organismo</p></td>
+                <td><p>{{ entity.organismo }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Codigo Postal</p></td>
+                <td><p>{{ entity.CodigoPostal }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Telefono</p></td>
+                <td><p>{{ entity.Telefono }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Fax</p></td>
+                <td><p>{{ entity.Fax }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Email</p></td>
+                <td><p>{{ entity.email }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Area</p></td>
+                <td><p>{{ entity.area }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Metros</p></td>
+                <td><p>{{ entity.Metros }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Codigo de Contrato</p></td>
+                <td><p>{{ entity.CodigoContrato }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Sala</p></td>
+                <td><p>{{ entity.Sala }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Stan</p></td>
+                <td><p>{{ entity.Stan }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Productos</p></td>
+                <td><p>{{ entity.Productos | raw }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Firmas</p></td>
+                <td><p>{{ entity.Firmas | raw }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Observaciones</p></td>
+                <td><p>{{ entity.Observaciones | raw }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Identificador</p></td>
+                <td><p>{{ entity.identificador }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Fecha Creada</p></td>
+                <td><p>{{ entity.FechaCreado|date('Y-m-d H:i:s') }}</p></td>
+            </tr>
+            <tr>
+                <td><p class="aspecto">Aprobada</p></td>
+                <td><p>{% if entity.Aprobada == true %} Aprobada {% else %} Desaprobada {% endif %}  </p></td>
+            </tr>
+
+    </table>
+
+   <br/>
+        <h4>Mobiliario, equipamiento y servicios</h4>
+        <table border="0" cellspacing="0" cellpadding="10">
+            <thead>
+              <tr>
+                  <td>Equipamento</td>
+                  <td>Precio</td>
+                  <td>Cantidad</td>
+                  <td>Costo</td>
+              </tr>
+            </thead>
+            <tbody>
+            {% set total = 0 %}
+            {% set cextras = 0 %}
+
+            {% if (entity.credenciales.count - Cantidad ) > 0 %}
+                {% set cextras = entity.credenciales.count - Cantidad  %}
+            {% endif %}
+            {% for sproducto in entity.solicitudproductos  %}
+                {% set costo = sproducto.Cantidad * sproducto.ServicioMobiliariaProducto.Precio %}
+                {% set total = costo + total  %}
+                <tr> <td>{{ sproducto.ServicioMobiliariaProducto.Nombre }}</td><td>${{ sproducto.ServicioMobiliariaProducto.Precio }}</td>  <td>{{ sproducto.Cantidad }}</td> <td>${{ costo }}</td>   </tr>
+
+            {% endfor %}
+            {% set total = total+(entity.area.Precio * entity.metros)+(cextras * 50) %}
+            <tr> <td>{{ entity.area.Nombre }}</td><td>${{ entity.area.Precio }}</td>  <td>{{ entity.metros }}</td> <td>${{ entity.area.Precio * entity.metros }}</td>   </tr>
+            {% if cextras > 0 %}
+            <tr> <td>Credenciales extras </td><td>$50.00</td>  <td>{{ cextras  }} </td> <td>${{ cextras * 50  }}</td>   </tr>
+            {% endif %}
+            <tr><th style="text-align: right;">Total</th><th colspan="4" style="text-align: left;"><span class="precioTotal">${{ total }}</span></th></tr>
+            </tbody>
+        </table>
+        <br/>
+        {% if  entity.credenciales.count > 0 %}
+        <h4>Credenciales</h4>
+        <table border="0" cellspacing="0" cellpadding="0">
+            <thead>
+            <tr>
+
+                    <td>Nombre</td>
+                    <td>Ci</td>
+                    <td>Pais/Provincia</td>
+                    <td>Cargo</td>
+
+
+            </tr>
+            </thead>
+            {% for scredencial in entity.credenciales  %}
+
+                <tr> <td>{{ scredencial.Nombre }}</td> <td>{{ scredencial.Ci }}</td><td>{{ scredencial.pais.nombre }}</td><td>{{ scredencial.cargo }}</td>  </tr>
+
+            {% endfor %}
+
+        </table>
+        {% endif %}
+        <br/>
+        <br/>
+        <h4>Esquema</h4>
+        {% if entity.path != null %}
+        <img src="{{ asset(entity.webPath) }}?q={{ random(10000000) }}" class="previewEsquema"/>
+        {% else %}
+        <p>No se ha definido un esquema para esta solicitud</p>
+        {% endif %}
+        <br/>
+        <br/>
+        {% if entity.area.idArea == 1 %}
+            <a  href="{{ path("solicitud_esquema", {identificador: entity.identificador}) }}" class="boton25">
+                <button type="submit" style="width: 100%" > Editar Esquema</button>
+            </a>
+        {% endif %}
+
+        <a href="{{ path("solicitud_participacion_edit",{ '_locale': app.request.locale  ,'identificador': entity.identificador }) }}" class="boton25">
+            <button type="submit" style="width: 100%"> Editar Solicitud</button>
+        </a>
+
+        {{ form(delete_form) }}
+
+    </div>
+
+</section>
+
+
+{% endblock %}

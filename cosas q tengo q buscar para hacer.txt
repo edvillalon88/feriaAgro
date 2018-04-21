@@ -1,0 +1,13 @@
+Restringir acceso a solicitod
+
+--Crear solo para usuarios anonimos
+--Listar solicitud para administradores
+--Aprobar solicitud para administradores
+
+Obtener valor de una variable por el objeto Request
+
+--esto lo quiero para obtener del formulario el porq no se aprobo la solicitud
+
+Como pasar lista de objetos hacia la controladora
+
+-Esto lo quier para pasar una lista de prodcutos de la solicitud

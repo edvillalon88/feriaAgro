@@ -1,0 +1,29 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Registrar Usuario{% endblock %}
+
+{% block body -%}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Nuevo Usuario</h3>
+        </div>
+        <div class="panel-body">
+            {{ form_start(form) }}
+
+            {{ form_row(form.Usuario) }}
+
+            <br/>
+
+            {{ form_row(form.Password) }}
+
+            <br/>
+
+            {{ form_row(form.submit) }}
+
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+{% endblock %}

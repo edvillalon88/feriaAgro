@@ -1,0 +1,30 @@
+smp:
+    path:     /
+    defaults: { _controller: "feriaagropecuariaBackendBundle:ServicioMobiliariaProducto:index" }
+
+smp_show:
+    path:     /{id}/show
+    defaults: { _controller: "feriaagropecuariaBackendBundle:ServicioMobiliariaProducto:show" }
+
+smp_new:
+    path:     /new
+    defaults: { _controller: "feriaagropecuariaBackendBundle:ServicioMobiliariaProducto:new" }
+
+smp_create:
+    path:     /create
+    defaults: { _controller: "feriaagropecuariaBackendBundle:ServicioMobiliariaProducto:create" }
+    methods:  POST
+
+smp_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "feriaagropecuariaBackendBundle:ServicioMobiliariaProducto:edit" }
+
+smp_update:
+    path:     /{id}/update
+    defaults: { _controller: "feriaagropecuariaBackendBundle:ServicioMobiliariaProducto:update" }
+    methods:  [POST, PUT]
+
+smp_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "feriaagropecuariaBackendBundle:ServicioMobiliariaProducto:delete" }
+    methods:  [POST, DELETE]

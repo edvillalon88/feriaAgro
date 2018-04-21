@@ -1,0 +1,38 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Servicio lis{% endblock %}
+{% block body -%}
+
+<div class="table-responsive">
+    <table class="records_list table table-striped">
+        <thead>
+            <tr>
+                <th>Idservicio</th>
+                <th>Nombre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('servicio_show', { 'id': entity.idServicio }) }}">{{ entity.idServicio }}</a></td>
+                <td>{{ entity.Nombre }}</td>
+                <td>
+
+
+                        <a href="{{ path('servicio_show', { 'id': entity.idServicio }) }}"><button type="button" class="btn btn-default">show</button></a>
+
+                        <a href="{{ path('servicio_edit', { 'id': entity.idServicio }) }}"><button type="button" class="btn btn-default">edit</button></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+            <a href="{{ path('servicio_new') }}">
+                <button type="button" class="btn btn-primary">Create a new entry</button>
+            </a>
+
+    {% endblock %}

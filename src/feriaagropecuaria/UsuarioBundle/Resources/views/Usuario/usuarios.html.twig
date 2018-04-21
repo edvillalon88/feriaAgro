@@ -1,0 +1,29 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Usuarios{% endblock %}
+
+{% block body -%}
+
+    <div class="table-responsive">
+        <table class="records_list table table-striped">
+            <thead>
+            <tr>
+                <th>Usuarios</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td>{{ entity.username }}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+{% endblock %}

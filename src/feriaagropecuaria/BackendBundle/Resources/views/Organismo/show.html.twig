@@ -1,0 +1,34 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Organismo{% endblock %}
+{% block body -%}
+
+
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idorganismo</th>
+                <td>{{ entity.idOrganismo }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.Nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('organismo') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('organismo_edit', { 'id': entity.idOrganismo }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

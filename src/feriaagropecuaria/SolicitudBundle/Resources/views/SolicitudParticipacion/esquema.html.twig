@@ -1,0 +1,270 @@
+{% extends '::sitiolayaout.html.twig' %}
+{% block selector  %}service{% endblock %}
+{% block body -%}
+    <style>
+        img
+        {
+            border: 0px !important;
+        }
+        #visor{
+            position:relative;
+            background:url({{ asset('bundles/feriaagropecuariasolicitud/images/cuadricula.jpg')  }});
+            float:left;
+            border: 10px solid #333;
+        }
+        #visor a{
+            position:absolute;
+        }
+
+        #tools {
+            list-style:none;
+        }
+        #tools li{
+            text-align: left;
+            height:30px;
+            margin-top: 10px;
+            cursor: pointer;
+
+        }
+        #tools a.active{
+            color: #d58512;
+
+        }
+        #tools img{
+            /*width:30px;
+            height:auto;*/
+            max-height:30px;
+            float: none;
+        }
+        .img
+        {
+            min-width:25px;
+            padding: 0px;
+                  display: inline;
+            float: left;
+            text-align: center;
+            border-radius: 2px;
+            margin-right: 15px;
+        }
+        .puntero{
+            opacity:.5;
+            position:absolute;
+            display:none;
+        }
+        #visor a img[src='img/ph.png']{
+            margin-bottom:9px;
+        }
+        #salvar{
+
+            float: left;
+            display: block;
+            background-color: #d58512;
+            color: #fff;
+            clear: left;
+            padding: 10px 20px;
+            margin: 20px;
+        }
+    </style>
+
+    <section id="galeria">
+    <h2>Esquema de  <span>stan</span></h2>
+    <br/>
+
+    <div id="sectioIzq" style="margin-top: 0px; text-align: right" >
+        {% if entity.area.idArea == 1 %}
+
+
+        <div style="width:800px; height:400px; background-color:#E9E9E9;" id="visor">
+            <img src="#" class="puntero" />
+        </div>
+
+        {% endif %}
+    </div>
+<div id="sectioDer">
+    <ul id="tools">
+
+        {% for smp in entity.solicitudproductos  %}
+
+            <li><a data-id="tomas" data-cant="{{ smp.Cantidad }}" data-rep="{{ asset(smp.ServicioMobiliariaProducto.WebPath)  }}" ><div class="img"><img  src="{{ asset(smp.ServicioMobiliariaProducto.WebPath)  }}" /></div> {{ smp.ServicioMobiliariaProducto.Nombre }} ({{ smp.Cantidad }})</a></li>
+
+        {% endfor %}
+        <li><a   data-id="asda" data-cant="40" data-rep="{{ asset('bundles/feriaagropecuariasolicitud/images/Componentes/ico-29.png')  }}" ><div class="img"><img src="{{ asset('bundles/feriaagropecuariasolicitud/images/Componentes/ico-18.png')  }}" /></div>Panel Vertical</a></li>
+        <li><a   data-id="aasda" data-cant="40" data-rep="{{ asset('bundles/feriaagropecuariasolicitud/images/Componentes/ico-28.png')  }}" ><div class="img"><img src="{{ asset('bundles/feriaagropecuariasolicitud/images/Componentes/ico-19.png')  }}" /></div>Panel Horizontal</a></li>
+        <li><a  data-id="asdas" data-cant="40" data-rep="{{ asset('bundles/feriaagropecuariasolicitud/images/Componentes/ico-24.png')  }}" ><div class="img"><img src="{{ asset('bundles/feriaagropecuariasolicitud/images/Componentes/ico-20.png')  }}" /></div>Panel Curvo</a></li>
+        <li><a  data-id="asdas" data-cant="40" data-rep="{{ asset('bundles/feriaagropecuariasolicitud/images/Componentes/ico-25.png')  }}" ><div class="img"><img src="{{ asset('bundles/feriaagropecuariasolicitud/images/Componentes/ico-21.png')  }}" /></div>Panel Curvo</a></li>
+        <li><a   data-id="asdas" data-cant="40" data-rep="{{ asset('bundles/feriaagropecuariasolicitud/images/Componentes/ico-26.png')  }}" ><div class="img"><img src="{{ asset('bundles/feriaagropecuariasolicitud/images/Componentes/ico-22.png')  }}" /></div>Panel Curvo</a></li>
+        <li><a  data-id="asda" data-cant="40" data-rep="{{ asset('bundles/feriaagropecuariasolicitud/images/Componentes/ico-27.png')  }}" ><div class="img"><img src="{{ asset('bundles/feriaagropecuariasolicitud/images/Componentes/ico-23.png')  }}" /></div>Panel Curvo</a></li>
+
+        <li><a   data-id="borrador" data-cant="0" ><img src="{{ asset('bundles/feriaagropecuariasolicitud/images/ComponentesPrueba/ico-ph.jpg"')  }}" alt=""/>Borrador</a></li>
+    </ul>
+    <a href="#" id="salvar">Salvar</a>
+</div>
+
+    </section>
+    <div id="cargando" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+        <div class="modal-header">
+            <h3 id="myModalLabel">Guardar <span>Esquema</span></h3>
+        </div>
+        <div class="modal-body">
+            <div>
+
+               Guardando Esquema.......
+            </div>
+
+        </div>
+        <div class="modal-footer">
+
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts -%}
+<script src="{{ asset('bundles/feriaagropecuariasolicitud/js/html2canvas.js') }}"></script>
+    <script >
+        $(document).ready(function(){
+
+            $("#tools a").click(function(e){
+
+               
+               
+
+                $("#tools a").removeClass("active");
+                $(this).addClass("active");
+                var icono = $(this).attr("data-rep");
+
+                $(".puntero").attr("src",icono);
+
+            });
+
+            $("#visor").mousemove(function(e){
+
+                if(e.offsetX == undefined){ // para firefox
+                    x = e.pageX ;
+                    y = e.pageY ;
+                } else{ // chrome
+                    x = e.pageX - $(this).offset().left;
+                    y = e.pageY -$(this).offset().top;
+                }
+                if($("#tools a.active").attr("data-id") != "borrador"){
+                    $(".puntero").show();
+                    $(".puntero").css("left",x+"px");
+                    $(".puntero").css("top",y+"px");
+                }
+            });
+
+            $("#visor").mouseleave(function(){$(".puntero").hide();});
+
+
+
+            $("#visor").click(function(e){
+                //recojo las posiciones x, y
+                if (e.offsetX != undefined) { // chrome
+                    x = e.pageX - $(this).offset().left;
+                    y = e.pageY - $(this).offset().top;
+                } else { // para firefox
+                    x = e.pageX;
+                    y = e.pageY;
+                }
+
+                var margenAjuste = 10;
+                var adicionar = $("#tools a.active");
+				
+                var cantidad = Number(adicionar.attr("data-cant"));
+
+                if(cantidad >0){
+                    for(var i=0; i< $(this).children("a").length; i++){
+                        actualX = Number($(this).children("a").eq(i).css("left").replace("px",""));
+                        actualY = Number($(this).children("a").eq(i).css("top").substring(0,-2));
+
+                        if((actualX-x)>(margenAjuste*-1) && (actualX-x)<margenAjuste){	x = actualX; }
+
+                        if((actualY-y)>(margenAjuste*-1) && (actualY-y)<margenAjuste){ 	y = actualY; }
+                    }
+                    $(this).append("<a href='#' style=' top:"+y+"px; left:"+x+"px'><img src='"+adicionar.attr("data-rep")+"' /></a>");
+                    cantidad = cantidad-1;
+                    adicionar.attr("data-cant",cantidad);
+
+                }
+
+                //borrador
+                if($("#tools a.active").attr("data-id") == "borrador"){
+
+                    $("#visor a").not(".puntero").bind("click",function(e){
+                        e.stopPropagation();
+                        e.preventDefault();
+
+
+                        if($("#tools a.active").attr("data-id") == "borrador"){
+                            activado = $("#tools li").children("a[data-rep='"+$(this).children("img").attr("src")+"']");
+                            activado.attr("data-cant", Number(activado.attr("data-cant"))+1);
+                            //for(var i=0; i<$("ul li").length; i++){
+                            console.log($(this).attr("src"));
+                            //	if($(this).children("img").attr("src") == $("ul li").children("a").eq(i).attr("data-rep")){
+                            //	anterior = Number($("ul li").children("a").eq(i).attr("data-cant"));
+                            //myEq = i;
+                            //console.log("objetivo: "+$(this).children("img").attr("src")+" / busqueda: "+ $("ul li").children("a").eq(i).attr("data-rep"));
+
+                            //}
+
+                            //}
+                            //console.log(anterior);
+                            //$("ul li").children("a").eq(myEq).attr("data-cant",anterior+1);
+                            $(this).remove();
+
+                        }
+
+                    });//cierre visor a
+
+                } else {
+                    $("#visor a").not(".puntero").unbind("click");
+
+                }
+            });
+
+
+            //here is the hero, after the capture button is clicked
+			//he will take the screen shot of the div and save it as image.
+			$('#salvar').click(function(e){
+			    e.preventDefault();
+				//get the div content
+				div_content = $("#visor");
+				//make it as html5 canvas
+				html2canvas(div_content).then(function(canvas) {
+					//change the canvas to jpeg image
+					data = canvas.toDataURL('image/jpeg');
+
+					//then call a super hero php to save the image
+					save_img(data);
+				});
+			});
+
+
+
+        });
+
+        //to save the canvas image
+		function save_img(data){
+			//ajax method.
+			//$("#file1").val(data);
+            $("#cargando").modal('show');
+			$.post('{{ path('guardar_imagen',{id : entity.idSolicitudParticipacion}) }}', {data: data},
+                function(res){
+
+
+
+                    if(res == "true")
+                    {
+
+                        location.href = "{{ path('solicitud_participacion_show', {identificador: entity.identificador}) }}";
+                    }else
+                    {
+                        alert("Ha ocurrido un error al crear el esquema");
+                        $("#cargando").modal('hide');
+                    }
+
+                }
+			);
+
+
+		}
+    </script>
+{% endblock %}

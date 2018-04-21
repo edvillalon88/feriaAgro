@@ -1,0 +1,47 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Producto list{% endblock %}
+
+{% block body -%}
+<div class="table-responsive">
+
+    <table class="records_list table table-striped">
+        <thead>
+            <tr>
+                <th>Idproducto</th>
+                <th>Nombre</th>
+                <th>Foto1</th>
+                <th>Foto2</th>
+                <th>Foto3</th>
+                <th>Precio</th>
+                <th>Descripcion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('producto_show', { 'id': entity.idProducto }) }}">{{ entity.idProducto }}</a></td>
+                <td>{{ entity.Nombre }}</td>
+                <td><img src="{{ web_image(entity.webPathFoto1).resize(100,100) }}" width="100" /></td>
+                <td><img src="{{ web_image(entity.webPathFoto2).resize(100,100) }}" width="100" /></td>
+                <td><img src="{{ web_image(entity.webPathFoto3).resize(100,100) }}" width="100" /></td>
+                <td>{{ entity.Precio }}</td>
+                <td>{{ entity.Descripcion }}</td>
+                <td>
+
+                        <a href="{{ path('producto_show', { 'id': entity.idProducto }) }}"><button type="button" class="btn btn-default">show</button></a></a>
+                        <a href="{{ path('producto_edit', { 'id': entity.idProducto }) }}"><button type="button" class="btn btn-default">edit</button></a></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+            <a href="{{ path('producto_new') }}">
+                <button type="button" class="btn btn-primary">Create a new entry</button>
+            </a>
+
+    {% endblock %}

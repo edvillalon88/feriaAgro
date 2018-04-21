@@ -1,0 +1,29 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Pais edit{% endblock %}
+
+{% block body -%}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Editar País</h3>
+    </div>
+    <div class="panel-body">
+        {{ form_start(edit_form) }}
+        {{ form_row(edit_form.Nombre) }}
+        <br/>
+        {{ form_row(edit_form.submit) }}
+        {{ form_end(edit_form) }}
+    </div>
+</div>
+
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('pais') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

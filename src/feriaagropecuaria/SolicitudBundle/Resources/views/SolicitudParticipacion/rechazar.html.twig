@@ -1,0 +1,22 @@
+{% extends '::adminlayaout.html.twig' %}
+
+{% block body -%}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Rechazar Solicirud</h3>
+        </div>
+        <div class="panel-body">
+            {{ form_start(form) }}
+
+            {{ form_row(form.Descripcion) }}
+            <br/>
+            {{ form_row(form.submit) }}
+
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+    {{ form(form) }}
+
+{% endblock %}

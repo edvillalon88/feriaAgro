@@ -1,0 +1,53 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Foto{% endblock %}
+{% block body -%}
+
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idfichero</th>
+                <td>{{ entity.idFichero }}</td>
+            </tr>
+            <tr>
+                <th>Foto</th>
+                <td>
+                    {% if entity.tipo == 1 %}
+                        <img src="{{ web_image(entity.webPath).resize(100,100)}}" width="100" />
+                    {% else %}
+
+                        <video  controls width="200" height="200">
+                            <source src="{{ asset(entity.webPath) }}" type="video/mp4">
+
+                            Your browser does not support the video tag.
+                        </video>
+
+                    {% endif %}
+                </td>
+            </tr>
+
+                <th>Descripcion</th>
+                <td>{{ entity.Descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ entity.Fecha|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('foto') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('foto_edit', { 'id': entity.idFichero }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

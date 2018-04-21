@@ -1,0 +1,33 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Album{% endblock %}
+{% block body -%}
+
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idalbum</th>
+                <td>{{ entity.idAlbum }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.Nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('album') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('album_edit', { 'id': entity.idAlbum }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

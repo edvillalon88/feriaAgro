@@ -1,0 +1,38 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Area {% endblock %}
+
+{% block body -%}
+
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idarea</th>
+                <td>{{ entity.idArea }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.Nombre }}</td>
+            </tr>
+            <tr>
+                <th>Precio</th>
+                <td>{{ entity.Precio }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('area') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('area_edit', { 'id': entity.idArea }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

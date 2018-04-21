@@ -1,0 +1,37 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Fotos de Servicio edit{% endblock %}
+{% block body -%}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Nueva Album</h3>
+        </div>
+        <div class="panel-body">
+            {{ form_start(edit_form) }}
+
+            {{ form_row(edit_form.Fichero) }}
+            <br/>
+            {{ form_row(edit_form.Descripcion) }}
+            <br/>
+            <label>Decripcion en Ingles</label>
+            <textarea type="text" class="form-control" required="required" name="DescripcionENG" ></textarea>
+            <br/>
+            {{ form_row(edit_form.Servicio) }}
+            <br/>
+            {{ form_end(edit_form) }}
+
+        </div>
+    </div>
+
+
+
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('fotoservicio') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

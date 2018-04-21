@@ -1,0 +1,58 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+   # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+      providers:
+          #in_memory:
+             #memory: ~
+          Usuarios:
+            entity: { class: feriaagropecuaria\UsuarioBundle\Entity\Usuario, property: Usuario }
+
+      encoders:
+          feriaagropecuaria\UsuarioBundle\Entity\Usuario: { algorithm: sha512, iterations: 10  }
+
+      firewalls:
+          # disables authentication for assets and the profiler, adapt it according to your needs
+          dev:
+              pattern: ^/(_(profiler|wdt)|css|images|js)/
+              security: false
+
+          backend:
+              pattern: ^/*
+              anonymous: ~
+              form_login:
+                  login_path: /usuario/login
+                  check_path: /usuario/login_check
+              logout:
+                  path:   /usuario/logout
+                  target: /admin/
+                  invalidate_session: false
+
+          main:
+              anonymous: ~
+              # activate different ways to authenticate
+
+              # http_basic: ~
+              # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+              # form_login: ~
+              # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+      access_control:
+        - { path: ^/admin/*, roles: ROLE_USUARIO }
+        - { path: ^/usuario/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        - { path: ^/solicitud/nuevacredencial/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/solicitud/salvarcredencial/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/solicitud/solicitud_participacion/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/solicitud/solicitud_participacion/create, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/solicitud/solicitud_participacion/show/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/solicitud/solicitud_participacion/edit/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/solicitud/solicitud_participacion/update/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/solicitud/solicitud_participacion/delete/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/solicitud/solicitud_participacion/delete/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/solicitud/solicitud_participacion/guardarimg/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/solicitud/solicitud_participacion/verificar/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/solicitud/solicitud_participacion/esquema/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/solicitud/solicitud_participacion/*, roles: ROLE_USUARIO }
+        - { path: ^/usuario/*, roles: ROLE_USUARIO }

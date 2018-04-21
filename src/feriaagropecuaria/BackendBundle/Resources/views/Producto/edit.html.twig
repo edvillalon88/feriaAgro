@@ -1,0 +1,47 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Producto edit{% endblock %}
+
+{% block body -%}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Editar Producto</h3>
+    </div>
+    <div class="panel-body">
+        {{ form_start(edit_form) }}
+
+        {{ form_row(edit_form.Nombre) }}
+        <br/>
+        <label>Nombre en Ingles</label>
+        <input type="text" class="form-control" required="required" name="NombreENG" />
+        <br/>
+        {{ form_row(edit_form.Fichero1) }}
+        <br/>
+        {{ form_row(edit_form.Fichero2) }}
+        <br/>
+        {{ form_row(edit_form.Fichero3) }}
+        <br/>
+        {{ form_row(edit_form.Precio) }}
+        <br/>
+        {{ form_row(edit_form.Descripcion) }}
+        <br/>
+        <label>Decripcion en Ingles</label>
+        <textarea type="text" class="form-control" required="required" name="DescripcionENG" ></textarea>
+        <br/>
+        {{ form_row(edit_form.submit) }}
+
+
+
+        {{ form_end(edit_form) }}
+    </div>
+</div>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('producto') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

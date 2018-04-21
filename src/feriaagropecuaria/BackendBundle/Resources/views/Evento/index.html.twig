@@ -1,0 +1,42 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Eventos{% endblock %}
+{% block body -%}
+
+
+    <div class="table-responsive">
+        <table class="records_list table table-striped">
+            <thead>
+            <tr>
+                <th>Idarea</th>
+                <th>Nombre</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('evento_show', { 'id': entity.idEvento }) }}">{{ entity.idEvento }}</a></td>
+                    <td>{{ entity.Nombre }}</td>
+                    <td>
+
+                        <a href="{{ path('evento_show', { 'id': entity.idEvento }) }}"><button type="button" class="btn btn-default">show</button></a>
+
+                        <a href="{{ path('evento_edit', { 'id': entity.idEvento }) }}"><button type="button" class="btn btn-default">edit</button></a>
+
+                    </td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{{ path('evento_new') }}">
+        <button type="button" class="btn btn-primary">Create a new entry</button>
+    </a>
+
+
+
+    {% endblock %}

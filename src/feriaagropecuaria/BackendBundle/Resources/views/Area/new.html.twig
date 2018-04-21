@@ -1,0 +1,30 @@
+{% extends "::adminlayaout.html.twig" %}
+
+
+{% block body -%}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Nueva Área</h3>
+    </div>
+    <div class="panel-body">
+
+        {{ form_start(form) }}
+        {{ form_row(form.Nombre) }}
+        <br/>
+        <label>Nombre en Ingles</label>
+        <input name="NombreENG" type="text" required="required" class="form-control"/>
+        <br/>
+        {{ form_row(form.Precio) }}
+        <br/>
+        {{ form_row(form.submit) }}
+        {{ form_end(form) }}
+    </div>
+</div>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('area') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

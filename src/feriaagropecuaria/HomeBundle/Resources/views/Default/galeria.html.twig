@@ -1,0 +1,86 @@
+{% extends "::sitiolayaout.html.twig" %}
+
+{% block selector  %}galery{% endblock %}
+
+{% block body -%}
+<style type="text/css">
+    #albunes video
+    {
+        border: 6px solid #282828;
+        border-radius: 3px;
+    }
+</style>
+
+    <section id="galeria">
+        <h2>Galer&iacute;a</h2>
+        <div id="sectioIzq" >
+            <ul id="albunes">
+
+                {% for album in entities %}
+
+                   <li data-ref="{{ path('feriaagropecuaria_home_foto',{'_locale': app.request.locale, 'idAlbum' : album.idAlbum})  }}">
+                    {% if album.fotos.count > 0 %}
+
+                        {% if album.fotos[0].tipo == 1 %}
+                            <img src="{{ web_image(album.fotos[0].webPath)}}" alt=""/><a href="#">{{ album.Nombre  }}</a>
+
+                        {% else %}
+
+                            <video  controls ="false" height="140px" autoplay muted>
+                                <source src="{{ asset(album.fotos[0].webPath) }}" type="video/mp4">
+
+                                Your browser does not support the video tag.
+                            </video>
+                            <a href="#">{{ album.Nombre  }}</a>
+                        {% endif %}
+
+                    {% else %}
+
+                        <img src="{{ asset('bundles/feriaagropecuariahome/images/no-miniatura.png') }}" alt=""/><a href="#">{{ album.Nombre  }}</a>
+
+                    {% endif %}
+                   </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+        <div id="sectioDer" ></div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        $(document).ready(function(){
+
+
+        $("#albunes li").click(function(e){
+        e.preventDefault();
+        $("#albunes li").removeClass("active");
+        $(this).addClass("active");
+
+        var datos = $(this).attr("data-ref");
+        $("#sectioDer").html("<div class='preload'></div>");
+        $("#sectioDer").load(datos, function(){
+        if(detectPantalla() == "movil" || detectPantalla() == "tablet"){
+        //para scrollear hasta el album desplegado
+        //$.smoothScroll({scrollTarget: '#' + 'sectioDer'});
+        $("#sectioIzq").hide();
+        }
+
+        $("#sectioDer").show();
+        $("#irAtras").click(function(e){
+        e.preventDefault();
+        $("#sectioIzq").show();
+        $("#sectioDer").hide();
+        $("#albunes li").removeClass("active");
+        });
+        });
+        });
+
+
+        //document ready
+        });//------------
+        //document ready
+    </script>
+{% endblock %}

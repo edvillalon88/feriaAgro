@@ -1,0 +1,76 @@
+solicitud_participacion:
+    path:     /
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:index" }
+
+
+
+solicitud_participacion_show:
+    path:     /show/{_locale}/{identificador}
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:show",  identificador: 0 }
+    requirements:
+       _locale: en|es
+
+solicitud_participacion_aprobar:
+    path:     /aprobar/{id}
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:aprobar" }
+
+solicitud_participacion_aprobada:
+    path:     /aprobada/{id}
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:aprobada" }
+    methods:  [POST, PUT]
+
+solicitud_nueva_credencial:
+    path:     /nuevacredencial/{identificador}
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:credencial"}
+
+solicitud_salvar_credencial:
+    path:     /salvarcredencial/{id}
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:salvarcredenciales"}
+    methods:  [POST, PUT]
+
+solicitud_participacion_new:
+    path:     /new/{_locale}
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:new", _locale: es }
+    requirements:
+       _locale: en|es
+
+solicitud_participacion_create:
+    path:     /create
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:create" }
+    methods:  POST
+
+solicitud_participacion_edit:
+    path:     /edit/{_locale}/{identificador}
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:edit" }
+
+solicitud_participacion_update:
+    path:     /update/{id}
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:update" }
+    methods:  [POST, PUT]
+
+solicitud_participacion_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:delete" }
+    methods:  [POST, DELETE]
+
+solicitud_rechazo:
+    path: /rechazo/{idsolicitud}
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:rechazo" }
+
+solicitud_rechazar:
+    path: /rechazar/{idsolicitud}
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:rechazar" }
+
+verificar_solicitud:
+    path: /verificar/
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:verificar" }
+    methods:  [POST]
+
+solicitud_esquema:
+    path: /esquema/{identificador}
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:esquema" }
+
+guardar_imagen:
+    path: /guardarimg/{id}
+    defaults: { _controller: "feriaagropecuariaSolicitudBundle:SolicitudParticipacion:guardarimg" }
+    methods:  [POST]

@@ -1,0 +1,38 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Servicio, Mobiliaria y Producto{% endblock %}
+
+{% block body -%}
+
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idserviciomobiliariaproducto</th>
+                <td>{{ entity.idServicioMobiliariaProducto }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.Nombre }}</td>
+            </tr>
+            <tr>
+                <th>Precio</th>
+                <td>{{ entity.Precio }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('smp') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('smp_edit', { 'id': entity.idServicioMobiliariaProducto }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

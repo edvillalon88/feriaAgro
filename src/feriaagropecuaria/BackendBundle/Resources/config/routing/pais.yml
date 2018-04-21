@@ -1,0 +1,30 @@
+pais:
+    path:     /
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Pais:index" }
+
+pais_show:
+    path:     /{id}/show
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Pais:show" }
+
+pais_new:
+    path:     /new
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Pais:new" }
+
+pais_create:
+    path:     /create
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Pais:create" }
+    methods:  POST
+
+pais_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Pais:edit" }
+
+pais_update:
+    path:     /{id}/update
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Pais:update" }
+    methods:  [POST, PUT]
+
+pais_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "feriaagropecuariaBackendBundle:Pais:delete" }
+    methods:  [POST, DELETE]

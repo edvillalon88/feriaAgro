@@ -1,0 +1,43 @@
+{% extends "::adminlayaout.html.twig" %}
+
+{% block titulo -%}Album lis{% endblock %}
+
+{% block body -%}
+
+
+<div class="table-responsive">
+    <table class="records_list table table-striped">
+        <thead>
+        <tr>
+            <th>Idalbum</th>
+            <th>Nombre</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('album_show', { 'id': entity.idAlbum }) }}">{{ entity.idAlbum }}</a></td>
+                <td>{{ entity.Nombre }}</td>
+                <td>
+
+
+
+
+
+                            <a href="{{ path('album_edit', { 'id': entity.idAlbum }) }}"><button type="button" class="btn btn-default">edit</button></a>
+
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+            <a href="{{ path('album_new') }}">
+                <button type="button" class="btn btn-primary">Create a new entry</button>
+            </a>
+{% endblock %}

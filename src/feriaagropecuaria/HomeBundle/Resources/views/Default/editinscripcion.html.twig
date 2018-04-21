@@ -1,0 +1,43 @@
+{% extends "::sitiolayaout.html.twig" %}
+
+
+
+{% block body -%}
+<section id="galeria">
+    <h2>Edite su <span>Inscripcion</span></h2>
+    <div>
+
+        <div class="control-group">
+            <center>
+                <label class="control-label" for="inputNombre" style="display: inline">Identificador</label>
+
+                <input type="number" id="identificador" placeholder="Inserte el identificador de su solicitud" />
+
+
+                <button id="enviar"> Enviar </button>
+
+            </center>
+
+        </div>
+
+
+    </div>
+</section>
+{% endblock %}
+
+{% block javascripts -%}
+    <script>
+        $(document).ready(function(){
+
+            $("#enviar").click(function(){
+                var iden = $("#identificador").val();
+                if(iden != "")
+                {
+                    window.location = "solicitud/solicitud_participacion/show/"+iden;
+                }
+
+            });
+
+        })
+    </script>
+{% endblock %}

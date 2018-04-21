@@ -1,0 +1,32 @@
+<div id="sectioIzq" >
+
+    <div id="fotosProducto">
+
+        <div id="imaProductos">
+            <div class="imaProducto"><img src="{{ asset(entities.producto.webPathFoto1) }}" alt="side" /></div>
+            <div class="imaProducto"><img src="{{ asset(entities.producto.webPathFoto2) }}" alt="side"  /></div>
+            <div class="imaProducto"><img src="{{ asset(entities.producto.webPathFoto3) }}" alt="side" /></div>
+
+        </div>
+
+        <div id="miniaturas">
+            <ul>
+                <li class="menuItem"><a href="#" data-img="{{ asset(entities.producto.webPathFoto1) }}" ><img src="{{ web_image(entities.producto.webPathFoto1).resize(100,100) }}" alt="side" /></a></li>
+                <li class="menuItem"><a href="#" data-img="{{ asset(entities.producto.webPathFoto2) }}" ><img src="{{ web_image(entities.producto.webPathFoto2).resize(100,100) }}" alt="side" /></a></li>
+                <li class="menuItem"><a href="#" data-img="{{ asset(entities.producto.webPathFoto3) }}" ><img src="{{ web_image(entities.producto.webPathFoto3).resize(100,100) }}" alt="side" /></a></li>
+
+            </ul>
+
+
+        </div>
+
+    </div>
+
+</div>
+<div id="sectioDer" >
+    <div id="infoProducto">
+        <h3>{{ entities.producto.Nombre }}</h3>
+        <p>{{ entities.producto.Descripcion | raw }}</p>
+
+    </div>
+</div>

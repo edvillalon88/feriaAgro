@@ -1,0 +1,133 @@
+{% extends "::sitiolayaout.html.twig" %}
+
+{% block selector  %}cerko{% endblock %}
+
+{% block body -%}
+<section id="cerko">
+
+    <div id="sectioIzq" >
+        <h2>Que es <span>Cerko</span></h2>
+    <ul>
+       <li>Fábrica de sistemas de “cercas eléctricas” cubanas.</li>
+        <li>Diseña, ensambla y desarrolla equipos y accesorios de energías renovables.</li>
+        <li>Desarrolla y construye equipos y accesorios eléctricos y electrónicos de aplicación en las ramas agropecuarias.</li>
+        <li>Servicios de asistencia técnica general y conferencias instructivas de las tecnologías que comercializa.</li>
+    </ul>
+       <h4> Diseña, ensambla, fabrica y realiza montajes relacionados con las FUENTES DE ENREGIAS RENOVABLES, Electro- Solar.</h4>
+        <ul>
+            <li>Generación de energía eléctrica en regiones aisladas con energía Solar-fotovoltaica hasta 3Kw.</li>
+            <li>Montajes en instalaciones a productores agropecuarios de sistemas de Luminarias Led, TV, ventiladores, computadoras y otros equipos electrodomésticos de bajo consumo.</li>
+            <li>Instala sistemas de cercas eléctricas ecológicas con fuentes renovables.</li>
+            <li>Fabrica e instala Secadores de Plantas medicinales Solares.</li>
+            <li>Fabrica e instala calentadores de Agua Solares.</li>
+            <li>Montajes y adaptaciones de Sistema de Bombeo de Agua – Solar con energía fotovoltaica y bombas sumergibles, para el abasto de agua al ganado y sistema de regadíos por goteo y aspersión a plantaciones de café y otros cultivos.</li>
+        </ul>
+        <h4>Asistencia Técnica</h4>
+        <ul>
+            <li>Instala y realiza mantenimientos a los sistemas de ordeño mecanizado.</li>
+            <li>Servicios de post- venta a todas las producciones que realizamos y comercializamos.</li>
+            <li>Capacitación a productores sobre la aplicación de las tecnologías que producimos e instalamos a todo el sistema de la agricultura, Anap, Azcuba, proyectos de ONG y otros productores agropecuarios.</li>
+            <li>Reparaciones capitales, medias y ligeras en el laboratorio central en la capital y en las sucursales ubicadas en la región oriental, central y occidental.</li>
+
+        </ul>
+    </div>
+
+    <div id="sectioDer" >
+        <img src="{{ asset('bundles/feriaagropecuariahome/images/cerko.png') }}"  alt="" style="width:85%; height:auto;"/><a href="{{ path('feriaagropecuaria_home_servcios',{'_locale': app.request.locale, 'pagina': 'energias' }) }}"><img src="{{ asset('bundles/feriaagropecuariahome/images/logo-renovable.png') }}" alt=""/></a>  </div>
+
+
+</section>
+{% endblock %}
+{% block javascripts %}
+
+    <script>
+        $(document).ready(function(){
+            //if(detectPantalla() != "movil"){
+
+
+            /*	} else {
+             $("#verFotosHistoria").click(function(e){
+             e.preventDefault();
+             if($(".slider2 .slide").eq(2).css("display") == "none")	{
+             $(".slider2 .slide").show();
+             $(this).html("Ocultar Fotos");
+             } else {
+             $(".slider2 .slide").hide();
+             $(".slider2 .slide").eq(0).show();
+             $(this).html("Mostrar Fotos");
+             }
+             });
+             }
+
+             /*------------------------------------------------------------------*/
+            var totWidth=0;
+            var positions = new Array();
+
+            $('#imaProductos > .imaProducto').each(function(i){
+
+                /* Traverse through all the slides and store their accumulative widths in totWidth */
+
+                positions[i]= totWidth;
+                totWidth += $(this).width();
+                console.log( i);
+                /* The positions array contains each slide's commulutative offset from the left part of the container */
+
+                if(!$(this).width())
+                {
+                    alert("Please, fill in width & height for all your images!");
+                    return false;
+                }
+
+            });
+
+
+
+
+
+            $('#imaProductos').width(totWidth);
+
+            /* Change the cotnainer div's width to the exact width of all the slides combined */
+
+            $('#miniaturas ul li a').click(function(e,keepScroll){
+
+                /* On a thumbnail click */
+
+                $('li.menuItem').removeClass('act').addClass('inact');
+                $(this).parent().addClass('act');
+
+                var pos = $(this).parent().prevAll('.menuItem').length;
+
+                $('#imaProductos').stop().animate({marginLeft:-positions[pos]+'px'},450);
+                /* Start the sliding animation */
+                console.log(positions[pos]);
+                e.preventDefault();
+                /* Prevent the default action of the link */
+
+
+                // Stopping the auto-advance if an icon has been clicked:
+
+            });
+
+            $('#miniaturas ul li.menuItem:first').addClass('act').siblings().addClass('inact');
+            /* On page load, mark the first thumbnail as active */
+
+
+
+            /*****
+             *
+             *	Enabling auto-advance.
+             *
+             ****/
+
+            var current=1;
+
+
+            /* End of customizations */
+            /*------------------------------------------------------------------*/
+
+            //document ready
+        });//------------
+        //document ready
+
+    </script>
+{% endblock %}
